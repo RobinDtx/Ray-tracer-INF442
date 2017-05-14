@@ -21,3 +21,11 @@ RayDataStructure::RayDataStructure(Vector origin, Vector direction){
 	this->direction = direction;
 }
 
+Vector* RayDataStructure::getOrigin(){
+	return(&origin);
+}
+
+Vector* RayDataStructure::getDirection(){
+	return(&direction);
+}
+
