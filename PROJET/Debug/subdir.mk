@@ -5,15 +5,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../RayDataStructure.cpp \
-../Vector.cpp 
+../Sphere.cpp \
+../Vector.cpp \
+../main.cpp 
 
 OBJS += \
 ./RayDataStructure.o \
-./Vector.o 
+./Sphere.o \
+./Vector.o \
+./main.o 
 
 CPP_DEPS += \
 ./RayDataStructure.d \
-./Vector.d 
+./Sphere.d \
+./Vector.d \
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

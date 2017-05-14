@@ -12,11 +12,11 @@
 class Sphere {
 	public:
 		Sphere();
-		Sphere(Vector &center, double radius)
+		Sphere(Vector &center, double radius);
 		virtual ~Sphere();
 
 	private:
-		Vector center;
+		Vector* center;
 		double radius;
 };
 
