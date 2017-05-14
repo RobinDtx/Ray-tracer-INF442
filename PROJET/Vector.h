@@ -14,6 +14,8 @@ class Vector
         double z();
 
         void add(Vector v);
+        void add(double x, double y, double z);
+
         virtual ~Vector();
     protected:
     private:
