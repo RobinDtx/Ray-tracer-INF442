@@ -8,9 +8,12 @@ class Vector
         Vector();
         Vector(double x, double y, double z);
         Vector(Vector v);
+
         double x();
         double y();
         double z();
+
+        void add(Vector v);
         virtual ~Vector();
     protected:
     private:

@@ -24,7 +24,9 @@ Vector::Vector(Vector v)
 }
 
 
-//Méthodes publiques
+
+
+//Getters
 double Vector::x()
 {
     return this->x;
@@ -38,6 +40,14 @@ double Vector::y()
 double Vector::z()
 {
     return this->z;
+}
+
+//Méthodes publiques
+void Vector::add(Vector v)
+{
+    this->x+=v.x();
+    this->y+=v.y();
+    this->z+=v.z();
 }
 
 Vector::~Vector()
