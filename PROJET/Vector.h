@@ -7,16 +7,16 @@ class Vector
     public:
         Vector();
         Vector(double x, double y, double z);
-        Vector(Vector v);
+        Vector(const Vector& v);
 
         double x();
         double y();
         double z();
 
-        void add(Vector v);
+        void add(const Vector& v);
         void add(double x, double y, double z);
         void multiply(double d);
-        bool equals(Vector v);
+        bool equals(const Vector& v);
 
         virtual ~Vector();
     protected:

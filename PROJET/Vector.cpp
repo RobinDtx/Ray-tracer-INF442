@@ -16,7 +16,7 @@ Vector::Vector(double x, double y, double z)
     Z=z;
 }
 
-Vector::Vector(Vector v)
+Vector::Vector(const Vector& v)
 {
     X=v.x();
     Y=v.y();
@@ -43,7 +43,7 @@ double Vector::z()
 }
 
 //Méthodes publiques
-void Vector::add(Vector v)
+void Vector::add(const Vector& v)
 {
     X+=v.x();
     Y+=v.y();
@@ -64,7 +64,7 @@ void Vector::multiply(double d)
     Z*=d;
 }
 
-bool Vector::equals(Vector v)
+bool Vector::equals(const Vector& v)
 {
     return (X==v.x()&&Y==v.y()&&Z==v.z());
 }
