@@ -15,6 +15,7 @@ class Vector
 
         void add(Vector v);
         void add(double x, double y, double z);
+        void multiply(double d);
 
         virtual ~Vector();
     protected:

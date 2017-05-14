@@ -57,6 +57,13 @@ void Vector::add(double x, double y, double z)
     this->z+=z;
 }
 
+void Vector::multiply(double d)
+{
+    this->x*=d;
+    this->y*=d;
+    this->z*=d;
+}
+
 Vector::~Vector()
 {
     //dtor
