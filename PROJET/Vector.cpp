@@ -4,23 +4,23 @@
 //Constructeurs
 Vector::Vector()
 {
-    x=0;
-    y=0;
-    z=0;
+    X=0;
+    Y=0;
+    Z=0;
 }
 
 Vector::Vector(double x, double y, double z)
 {
-    this->x=x;
-    this->y=y;
-    this->z=z;
+    X=x;
+    Y=y;
+    Z=z;
 }
 
 Vector::Vector(Vector v)
 {
-    x=v.x();
-    y=v.y();
-    z=v.z();
+    X=v.x();
+    Y=v.y();
+    Z=v.z();
 }
 
 
@@ -29,44 +29,44 @@ Vector::Vector(Vector v)
 //Getters
 double Vector::x()
 {
-    return x;
+    return X;
 }
 
 double Vector::y()
 {
-    return y;
+    return Y;
 }
 
 double Vector::z()
 {
-    return z;
+    return Z;
 }
 
 //Méthodes publiques
 void Vector::add(Vector v)
 {
-    x+=v.x();
-    y+=v.y();
-    z+=v.z();
+    X+=v.x();
+    Y+=v.y();
+    Z+=v.z();
 }
 
 void Vector::add(double x, double y, double z)
 {
-    this->x+=x;
-    this->y+=y;
-    this->z+=z;
+    X+=x;
+    Y+=y;
+    Z+=z;
 }
 
 void Vector::multiply(double d)
 {
-    x*=d;
-    y*=d;
-    z*=d;
+    X*=d;
+    Y*=d;
+    Z*=d;
 }
 
 bool Vector::equals(Vector v)
 {
-    return (x==v.x()&&y==v.y()&&z==v.z());
+    return (X==v.x()&&Y==v.y()&&Z==v.z());
 }
 
 

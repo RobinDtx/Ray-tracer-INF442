@@ -21,7 +21,7 @@ class Vector
         virtual ~Vector();
     protected:
     private:
-        double x,y,z;
+        double X,Y,Z;
 };
 
 #endif // VECTOR_H
