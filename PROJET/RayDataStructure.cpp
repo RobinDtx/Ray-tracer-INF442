@@ -29,3 +29,11 @@ Vector* RayDataStructure::getDirection(){
 	return(&direction);
 }
 
+void RayDataStructure::setOrigin(Vector origin){
+	this->origin = origin;
+}
+
+void RayDataStructure::setDirection(Vector direction){
+	this->direction = direction;
+}
+
