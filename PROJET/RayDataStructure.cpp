@@ -9,7 +9,7 @@
 
 RayDataStructure::RayDataStructure() {
 	this->origin = new Vector();
-	this->directino = new Vector();
+	this->direction = new Vector();
 }
 
 RayDataStructure::~RayDataStructure() {
