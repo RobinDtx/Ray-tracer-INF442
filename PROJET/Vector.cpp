@@ -16,28 +16,22 @@ Vector::Vector(double x, double y, double z)
     Z=z;
 }
 
-Vector::Vector(const Vector& v)
-{
-    X=v.x();
-    Y=v.y();
-    Z=v.z();
-}
 
 
 
 
 //Getters
-double Vector::x()
+double Vector::x() const
 {
     return X;
 }
 
-double Vector::y()
+double Vector::y() const
 {
     return Y;
 }
 
-double Vector::z()
+double Vector::z() const
 {
     return Z;
 }
