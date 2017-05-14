@@ -9,9 +9,18 @@
 #define RAYDATASTRUCTURE_H_
 
 class RayDataStructure {
-public:
-	RayDataStructure();
-	virtual ~RayDataStructure();
+	public:
+		RayDataStructure();
+		RayDataStructure(Vector origin, Vector direction);
+		virtual ~RayDataStructure();
+		setOrigin(Vector origin);
+		setDirection(Vector direction);
+		Vector* getOrigin();
+		Vector* getDirection();
+
+	private:
+		Vector origin
+		Vector direction
 };
 
 #endif /* RAYDATASTRUCTURE_H_ */
