@@ -7,7 +7,7 @@ class Vector
     public:
         Vector();
         Vector(double x, double y, double z);
-        Vector
+        Vector(Vector v);
         double x();
         double y();
         double z();

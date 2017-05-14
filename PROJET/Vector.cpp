@@ -1,5 +1,7 @@
 #include "Vector.h"
 
+
+//Constructeurs
 Vector::Vector()
 {
     x=0;
@@ -14,6 +16,15 @@ Vector::Vector(double x, double y, double z)
     this->z=z;
 }
 
+Vector::Vector(Vector v)
+{
+    this->x=v.x();
+    this->y=v.y();
+    this->z=v.z();
+}
+
+
+//Méthodes publiques
 double Vector::x()
 {
     return this->x;
