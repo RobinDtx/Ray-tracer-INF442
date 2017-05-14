@@ -18,9 +18,9 @@ Vector::Vector(double x, double y, double z)
 
 Vector::Vector(Vector v)
 {
-    this->x=v.x();
-    this->y=v.y();
-    this->z=v.z();
+    x=v.x();
+    y=v.y();
+    z=v.z();
 }
 
 
@@ -29,25 +29,25 @@ Vector::Vector(Vector v)
 //Getters
 double Vector::x()
 {
-    return this->x;
+    return x;
 }
 
 double Vector::y()
 {
-    return this->y;
+    return y;
 }
 
 double Vector::z()
 {
-    return this->z;
+    return z;
 }
 
 //Méthodes publiques
 void Vector::add(Vector v)
 {
-    this->x+=v.x();
-    this->y+=v.y();
-    this->z+=v.z();
+    x+=v.x();
+    y+=v.y();
+    z+=v.z();
 }
 
 void Vector::add(double x, double y, double z)
@@ -59,10 +59,16 @@ void Vector::add(double x, double y, double z)
 
 void Vector::multiply(double d)
 {
-    this->x*=d;
-    this->y*=d;
-    this->z*=d;
+    x*=d;
+    y*=d;
+    z*=d;
 }
+
+bool Vector::equals(Vector v)
+{
+    return (x==v.x()&&y==v.y()&&z==v.z());
+}
+
 
 Vector::~Vector()
 {
