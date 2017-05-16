@@ -21,10 +21,10 @@ class Sphere {
 		Sphere(double x, double y, double z, double radius, unsigned int red, unsigned int green, unsigned int blue);
 		virtual ~Sphere();
 
-		void setCenter(Vector *center);
+		void setCenter(Vector center);
 		void setCenter(double x, double y, double z);
 		void setRadius(double radius);
-		void setColor(Color *color);
+		void setColor(Color color);
 		void setColor(unsigned int red, unsigned int green, unsigned blue);
 
 		Vector* getCenter();

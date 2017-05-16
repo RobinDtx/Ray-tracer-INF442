@@ -7,20 +7,25 @@ class Vector
     public:
         Vector();
         Vector(double x, double y, double z);
-        //Constructeur de copie déjà créé
+        //Constructeur de copie dï¿½jï¿½ crï¿½ï¿½
 
         //Getters
         double x() const;
         double y() const;
         double z() const;
 
-        //Opérations
+        //Setters
+        void setX(double x);
+        void setY(double y);
+        void setZ(double z);
+
+        //Opï¿½rations
         void add(const Vector& v);
         void add(double x, double y, double z);
         void multiply(double d);
         bool equals(const Vector& v);
 
-        //Surcharge opérateurs
+        //Surcharge opï¿½rateurs
         //bool operator==(const Vector)
 
 

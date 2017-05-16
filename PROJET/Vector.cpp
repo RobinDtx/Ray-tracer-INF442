@@ -36,7 +36,18 @@ double Vector::z() const
     return Z;
 }
 
-//Méthodes publiques
+//Setters
+void Vector::setX(double x){
+	this->X = x;
+}
+void Vector::setY(double y){
+	this->Y = y;
+}
+void Vector::setZ(double z){
+	this->Z = z;
+}
+
+//Mï¿½thodes publiques
 void Vector::add(const Vector& v)
 {
     X+=v.x();
