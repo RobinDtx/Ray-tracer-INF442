@@ -11,22 +11,22 @@
 class Color {
 	public:
 		Color();
-		Color(int red, int green, int blue);
+		Color(unsigned int red, unsigned int green, unsigned int blue);
 		virtual ~Color();
 
-		void setRed(int red);
-		void setGreen(int green);
-		void setBlue(int blue);
+		void setRed(unsigned int red);
+		void setGreen(unsigned int green);
+		void setBlue(unsigned int blue);
 
-		int getRed();
-		int getGreen();
-		int getBlue();
+		unsigned int getRed() const;
+		unsigned int getGreen() const;
+		unsigned int getBlue() const;
 
 
 	private:
-		int red;
-		int green;
-		int blue;
+		unsigned int red;
+		unsigned int green;
+		unsigned int blue;
 
 };
 

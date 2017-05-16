@@ -13,7 +13,7 @@ Color::Color() {
 	this->blue = 0;
 }
 
-Color::Color(int red, int green, int blue){
+Color::Color(unsigned int red, unsigned int green, unsigned int blue){
 	this->red = red;
 	this->green = green;
 	this->blue = blue;
@@ -23,27 +23,27 @@ Color::~Color() {
 	// TODO Auto-generated destructor stub
 }
 
-void Color::setRed(int red){
+void Color::setRed(unsigned int red){
 	this->red = red;
 }
 
-void Color::setGreen(int green){
+void Color::setGreen(unsigned int green){
 	this->green = green;
 }
 
-void Color::setBlue(int blue){
+void Color::setBlue(unsigned int blue){
 	this->blue = blue;
 }
 
-int Color::getRed(){
+unsigned int Color::getRed() const{
 	return(red);
 }
 
-int Color::getGreen(){
+unsigned int Color::getGreen() const{
 	return(green);
 }
 
-int Color::getBlue(){
+unsigned int Color::getBlue() const{
 	return(blue);
 }
 
