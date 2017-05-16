@@ -24,15 +24,31 @@ Color::~Color() {
 }
 
 void Color::setRed(unsigned int red){
-	this->red = red;
+	if(red > 255){
+		this->red = 255;
+	}
+	else{
+		this->red = red;
+	}
 }
 
 void Color::setGreen(unsigned int green){
-	this->green = green;
+	if(green > 255){
+		this->green = 255;
+	}
+	else{
+		this->green = green;
+	}
 }
 
 void Color::setBlue(unsigned int blue){
-	this->blue = blue;
+	if(blue > 255){
+		this->blue = 255;
+	}
+	else{
+		this->blue = blue;
+	}
+
 }
 
 unsigned int Color::getRed() const{

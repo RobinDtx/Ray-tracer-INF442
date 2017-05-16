@@ -13,15 +13,15 @@
 class Sphere {
 	public:
 		Sphere();
-		Sphere(Vector const& center, double radius);
+		Sphere(Vector *center, double radius);
 		Sphere(double x, double y, double z, double radius);
-		Sphere(Vector const& center, double radius, Color const& color);
-		Sphere(double x, double y, double z, double radius, Color const& color);
-		Sphere(Vector const& center, double radius, unsigned int red, unsigned int green, unsigned int blue);
+		Sphere(Vector *center, double radius, Color *color);
+		Sphere(double x, double y, double z, double radius, Color *color);
+		Sphere(Vector *center, double radius, unsigned int red, unsigned int green, unsigned int blue);
 		Sphere(double x, double y, double z, double radius, unsigned int red, unsigned int green, unsigned int blue);
 		virtual ~Sphere();
 
-		void setCenter(Vector const& center);
+		void setCenter(Vector *center);
 		void setCenter(double x, double y, double z);
 		void setCenterX(double x);
 		void setCenterY(double y);
@@ -29,15 +29,15 @@ class Sphere {
 
 		void setRadius(double radius);
 
-		void setColor(Color const& color);
+		void setColor(Color *color);
 		void setColor(unsigned int red, unsigned int green, unsigned blue);
 		void setColorRed(unsigned int red);
 		void setColorGreen(unsigned int green);
 		void setColorBlue(unsigned int blue);
 
-		const Vector& getCenter() const;
-		double* getRadius() const;
-		Color* getColor() const;
+		const Vector* getCenter() const;
+		double getRadius() const;
+		const Color* getColor() const;
 
 
 
