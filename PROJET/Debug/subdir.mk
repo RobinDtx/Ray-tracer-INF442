@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../Color.cpp \
 ../RayDataStructure.cpp \
 ../Sphere.cpp \
 ../Vector.cpp \
@@ -14,12 +15,14 @@ O_SRCS += \
 ../main.o 
 
 OBJS += \
+./Color.o \
 ./RayDataStructure.o \
 ./Sphere.o \
 ./Vector.o \
 ./main.o 
 
 CPP_DEPS += \
+./Color.d \
 ./RayDataStructure.d \
 ./Sphere.d \
 ./Vector.d \
