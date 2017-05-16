@@ -9,14 +9,21 @@
 
 Sphere::Sphere() {
 	// TODO Auto-generated constructor stub
-	this->center = new Vector();
 	this->radius = 0;
 }
 
 Sphere::Sphere(Vector &center, double radius){
-	this->center = &center;
+	this->center = Vector(center);
 	this->radius = radius;
 }
+
+Sphere::Sphere(Vector &center, double radius, Color color){
+	this->center = Vector(center);
+	this->radius = radius;
+	this->color = Color(color);
+}
+
+
 
 Sphere::~Sphere() {
 	// TODO Auto-generated destructor stub

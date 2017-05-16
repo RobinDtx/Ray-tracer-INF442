@@ -14,7 +14,8 @@ class Sphere {
 	public:
 		Sphere();
 		Sphere(Vector &center, double radius);
-		Sphere(Vector &center, udouble radius, )
+		Sphere(Vector &center, double radius, Color &color);
+		Sphere(Vector &center, double radius, unsigned int red, unsigned int green, unsigned int blue);
 		virtual ~Sphere();
 
 		void setCenter(Vector *center);
