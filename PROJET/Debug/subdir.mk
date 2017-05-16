@@ -9,6 +9,10 @@ CPP_SRCS += \
 ../Vector.cpp \
 ../main.cpp 
 
+O_SRCS += \
+../Vector.o \
+../main.o 
+
 OBJS += \
 ./RayDataStructure.o \
 ./Sphere.o \
