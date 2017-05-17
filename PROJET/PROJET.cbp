@@ -32,6 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="RayDataStructure.cpp" />
+		<Unit filename="RayDataStructure.h" />
+		<Unit filename="Sphere.cpp" />
+		<Unit filename="Sphere.h" />
+		<Unit filename="Vector.cpp" />
+		<Unit filename="Vector.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

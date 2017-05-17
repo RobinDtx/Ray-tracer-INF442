@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1494785944 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\main.cpp
+	<iostream>
+	"Vector.h"
+
+1494785918 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\vector.h
+
+1494785944 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\raydatastructure.cpp
+	"RayDataStructure.h"
+
+1494785944 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\raydatastructure.h
+	"Vector.h"
+
+1494785944 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\sphere.cpp
+	"Sphere.h"
+
+1494785944 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\sphere.h
+	"Vector.h"
+
+1494784381 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\vector.cpp
+	"Vector.h"
+
