@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <iostream>
 
 
 //Constructeurs
@@ -47,7 +48,7 @@ void Vector::setZ(double z){
 	this->Z = z;
 }
 
-//M�thodes publiques
+//Methodes publiques
 void Vector::add(const Vector& v)
 {
     X+=v.x();
@@ -69,9 +70,14 @@ void Vector::multiply(double d)
     Z*=d;
 }
 
-bool Vector::equals(const Vector& v)
+bool Vector::equals(const Vector& v) const
 {
     return (X==v.x()&&Y==v.y()&&Z==v.z());
+}
+
+void Vector::print() const
+{
+    std::cout << "x = " << X << " ; y = " << Y << " ; z = " << Z << std::endl;
 }
 
 

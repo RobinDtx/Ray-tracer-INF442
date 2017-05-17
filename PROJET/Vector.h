@@ -7,7 +7,7 @@ class Vector
     public:
         Vector();
         Vector(double x, double y, double z);
-        //Constructeur de copie d�j� cr��
+        //Constructeur de copie deja cree
 
         //Getters
         double x() const;
@@ -19,13 +19,16 @@ class Vector
         void setY(double y);
         void setZ(double z);
 
-        //Op�rations
+        //Operations
         void add(const Vector& v);
         void add(double x, double y, double z);
         void multiply(double d);
-        bool equals(const Vector& v);
+        bool equals(const Vector& v) const;
 
-        //Surcharge op�rateurs
+        //Affichage
+        void print() const;
+
+        //Surcharge operateurs
         //bool operator==(const Vector)
 
 
