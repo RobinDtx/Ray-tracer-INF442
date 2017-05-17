@@ -1,5 +1,6 @@
 #include "Vector.h"
 #include <iostream>
+#include <math.h>
 
 
 //Constructeurs
@@ -75,9 +76,30 @@ bool Vector::equals(const Vector& v) const
     return (X==v.x()&&Y==v.y()&&Z==v.z());
 }
 
+double Vector::module() const
+{
+    return (sqrt(X*X+Y*Y+Z*Z));
+}
+
 void Vector::print() const
 {
     std::cout << "x = " << X << " ; y = " << Y << " ; z = " << Z << std::endl;
+}
+
+void Vector::print(std::ostream &flux) const
+{
+    flux << "x = " << X << " ; y = " << Y << " ; z = " << Z << std::endl;
+}
+
+
+bool Vector::operator==(const Vector& v)
+{
+    return equals(v);
+}
+
+bool Vector::operator!=(const Vector& v)
+{
+    return !equals(v);
 }
 
 
@@ -85,3 +107,6 @@ Vector::~Vector()
 {
     //dtor
 }
+
+
+

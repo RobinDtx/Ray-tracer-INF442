@@ -1,6 +1,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <iostream>
+
+
 
 class Vector
 {
@@ -25,11 +28,15 @@ class Vector
         void multiply(double d);
         bool equals(const Vector& v) const;
 
+        double module() const;
+
         //Affichage
         void print() const;
+        void print(std::ostream &flux) const;
 
         //Surcharge operateurs
-        //bool operator==(const Vector)
+        bool operator==(const Vector& v);
+        bool operator!=(const Vector& v);
 
 
 
@@ -38,5 +45,8 @@ class Vector
     private:
         double X,Y,Z;
 };
+
+
+
 
 #endif // VECTOR_H
