@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -40,7 +42,9 @@
 		<Unit filename="Sphere.h" />
 		<Unit filename="Vector.cpp" />
 		<Unit filename="Vector.h" />
+		<Unit filename="include/Scene.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Scene.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
