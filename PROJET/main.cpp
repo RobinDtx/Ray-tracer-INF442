@@ -3,6 +3,7 @@ using namespace std;
 #include "Vector.h"
 #include "RayDataStructure.h"
 #include "Color.h"
+#include "Sphere.h"
 
 std::ostream& operator<<(std::ostream &flux, const Vector& v )
 {
@@ -12,9 +13,9 @@ std::ostream& operator<<(std::ostream &flux, const Vector& v )
 
 int main()
 {
-	Color color(300,80,5);
-	color.setRed(260);
-	color.print();
+	Vector test (1,2,3);
+	Sphere sph (&test,3);
+    sph.print();
 	//test2.add(0,0,1.5);
 	//test.multiply(1.1);
 //	if (test==test2)

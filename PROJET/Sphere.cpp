@@ -6,6 +6,8 @@
  */
 
 #include "Sphere.h"
+#include <iostream>
+using namespace std;
 
 //Constructeurs
 Sphere::Sphere() {
@@ -45,6 +47,10 @@ Sphere::Sphere(double x, double y, double z, double radius, unsigned int red, un
 	this->center = Vector(x,y,z);
 	this->radius = radius;
 	this->color = Color(red, green, blue);
+}
+
+Sphere::~Sphere() {
+	// TODO Auto-generated destructor stub
 }
 
 
@@ -117,8 +123,14 @@ const Color* Sphere::getColor() const{
 }
 
 
-
-Sphere::~Sphere() {
-	// TODO Auto-generated destructor stub
+//Print
+void Sphere::print() const
+{
+    cout<<"Centre : ";
+    center.print();
+    cout<<"Rayon : "<<radius<<endl;
+    cout<<"Couleur : ";
+    color.print();
 }
+
 

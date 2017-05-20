@@ -39,6 +39,8 @@ class Sphere {
 		double getRadius() const;
 		const Color* getColor() const;
 
+		void print() const;
+
 
 
 	private:

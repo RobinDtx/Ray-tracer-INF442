@@ -54,6 +54,6 @@ unsigned int Color::getBlue() const{
 
 void Color::print() const
 {
-    cout << "RGB :" << getRed() << "/" << getGreen() << "/" << getBlue() << endl;
+    cout << "RGB " << getRed() << "/" << getGreen() << "/" << getBlue() << endl;
 }
 
