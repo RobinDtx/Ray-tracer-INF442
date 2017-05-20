@@ -22,6 +22,8 @@ class Color {
 		unsigned int getGreen() const;
 		unsigned int getBlue() const;
 
+		void print() const;
+
 
 	private:
 		unsigned int red;

@@ -7,6 +7,7 @@
 
 #include "Sphere.h"
 
+//Constructeurs
 Sphere::Sphere() {
 	// TODO Auto-generated constructor stub
 	this->radius = 0;
@@ -46,6 +47,8 @@ Sphere::Sphere(double x, double y, double z, double radius, unsigned int red, un
 	this->color = Color(red, green, blue);
 }
 
+
+//Setters
 void Sphere::setCenter(Vector *center){
 	this->center.setX(center->x());
 	this->center.setY(center->y());
@@ -97,6 +100,9 @@ void Sphere::setColorGreen(unsigned int green){
 void Sphere::setColorBlue(unsigned int blue){
 	this->color.setBlue(blue);
 }
+
+
+//Getters
 
 const Vector* Sphere::getCenter() const{
 	return(&center);
