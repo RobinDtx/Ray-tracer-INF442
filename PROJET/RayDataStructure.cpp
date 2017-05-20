@@ -41,3 +41,11 @@ void RayDataStructure::setDirection(Vector *direction){
 	this->direction.setZ(direction->z());
 }
 
+void RayDataStructure::print() const
+{
+    std::cout << "Origine : ";
+    origin.print();
+    std::cout << "Direction : ";
+    direction.print();
+
+}

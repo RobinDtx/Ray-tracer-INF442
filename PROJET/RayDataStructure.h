@@ -18,6 +18,7 @@ class RayDataStructure {
 		void setDirection(Vector *direction);
 		const Vector* getOrigin() const;
 		const Vector* getDirection() const;
+		void print() const;
 
 	private:
 		Vector origin;
