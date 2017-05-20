@@ -43,3 +43,11 @@
 	"Sphere.h"
 	<vector>
 
+1495300756 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\light.cpp
+	"Light.h"
+	<iostream>
+
+1495300605 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\light.h
+	"Vector.h"
+	"Color.h"
+

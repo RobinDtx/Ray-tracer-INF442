@@ -5,6 +5,7 @@ using namespace std;
 #include "Color.h"
 #include "Sphere.h"
 #include "Scene.h"
+#include "Light.h"
 
 std::ostream& operator<<(std::ostream &flux, const Vector& v )
 {
@@ -15,11 +16,9 @@ std::ostream& operator<<(std::ostream &flux, const Vector& v )
 int main()
 {
 	Vector test (1,2,3);
-	Sphere sph (&test,3);
-    Scene scene;
-    cout<<scene.spheres.size()<<endl;
-    scene.spheres.push_back(sph);
-    cout<<scene.spheres.size();
+	Color couleur (0,12,600);
+	Light light(test,couleur);
+    light.print();
 	//test2.add(0,0,1.5);
 	//test.multiply(1.1);
 //	if (test==test2)
