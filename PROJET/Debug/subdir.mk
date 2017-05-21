@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Algorithm.cpp \
+../Camera.cpp \
 ../Color.cpp \
 ../Light.cpp \
 ../RayDataStructure.cpp \
@@ -19,6 +20,7 @@ O_SRCS += \
 
 OBJS += \
 ./Algorithm.o \
+./Camera.o \
 ./Color.o \
 ./Light.o \
 ./RayDataStructure.o \
@@ -29,6 +31,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./Algorithm.d \
+./Camera.d \
 ./Color.d \
 ./Light.d \
 ./RayDataStructure.d \

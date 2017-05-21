@@ -5,13 +5,12 @@
 #include <vector>
 using namespace std;
 
-class Scene
+class Scene : protected vector<Sphere>
 {
     public:
         Scene();
         virtual ~Scene();
 
-        vector<Sphere> spheres;
 
     protected:
 
