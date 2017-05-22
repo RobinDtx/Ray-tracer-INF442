@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 
-class Scene : protected vector<Sphere>
+class Scene : public vector<Sphere>
 {
     public:
         Scene();
