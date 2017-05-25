@@ -12,7 +12,22 @@
 class Camera {
 	public:
 		Camera();
+		Camera(double heigh, double width);
+		Camera(Vector* eye, Vector* target, Vector* orientation);
+		Camera(Vector* eye, Vector* target, Vector* orientation, double heigh, double width);
 		virtual ~Camera();
+
+		const Vector* getEye() const;
+		const Vector* getTarget() const;
+		const Vector* getOrientation() const;
+		double getHeigh() const;
+		double getWidth() const;
+
+		void setEye(Vector* eye);
+		void setTarget(Vector* target);
+		void setOrientation(Vector* orientation);
+		void setHeigh(double heigh);
+		void setWidth(double width);
 
 	private:
 		double heigh;
