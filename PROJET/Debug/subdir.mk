@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../Camera.cpp \
 ../Color.cpp \
 ../Light.cpp \
+../Materiau.cpp \
 ../RayDataStructure.cpp \
 ../Scene.cpp \
 ../Sphere.cpp \
@@ -23,6 +24,7 @@ OBJS += \
 ./Camera.o \
 ./Color.o \
 ./Light.o \
+./Materiau.o \
 ./RayDataStructure.o \
 ./Scene.o \
 ./Sphere.o \
@@ -34,6 +36,7 @@ CPP_DEPS += \
 ./Camera.d \
 ./Color.d \
 ./Light.d \
+./Materiau.d \
 ./RayDataStructure.d \
 ./Scene.d \
 ./Sphere.d \
