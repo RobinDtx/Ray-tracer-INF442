@@ -59,6 +59,31 @@ double Camera::getWidth() const{
 	return(width);
 }
 
+void Camera::setEye(Vector* eye){
+	this->eye.setX(eye->x());
+	this->eye.setY(eye->y());
+	this->eye.setZ(eye->z());
+}
+
+void Camera::setTarget(Vector* target){
+	this->target.setX(target->x());
+	this->target.setY(target->y());
+	this->target.setZ(target->z());
+}
+
+void Camera::setOrientation(Vector* orientation){
+	this->orientation.setX(orientation->x());
+	this->orientation.setY(orientation->y());
+	this->orientation.setZ(orientation->z());
+}
+
+void Camera::setHeigh(double heigh){
+	this->heigh = heigh;
+}
+
+void Camera::setWidth(double width){
+	this->width = width;
+}
 
 Camera::~Camera() {
 
