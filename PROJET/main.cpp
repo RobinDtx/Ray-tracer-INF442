@@ -7,13 +7,14 @@ using namespace std;
 #include "Scene.h"
 #include "Light.h"
 
+
 std::ostream& operator<<(std::ostream &flux, const Vector& v )
 {
     v.print(flux);
     return flux;
 }
 
-int main()
+int main(int argc, char** argv)
 {
 	Vector test (1,2,3);
 	Color couleur (0,12,600);

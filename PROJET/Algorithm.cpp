@@ -8,16 +8,17 @@
 #include "Algorithm.h"
 #include <math.h>
 
-Algorithm::Algorithm() {
-	// TODO Auto-generated constructor stub
-
+Algorithm::Algorithm(std::vector<Light> *lights, Scene *scene, Camera *camera) {
+	this->lights = lights;
+	this->scene = scene;
+	this->camera = camera;
 }
 
 Algorithm::~Algorithm() {
 	// TODO Auto-generated destructor stub
 }
 
-static std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
+std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
 	// On écrit l'équation paramétrique de la droite
 	// On écrit l'équation cartésienne de la droite
 	// On résoud le système d'équation et on dit s'il existe une solution réelle au paramètre

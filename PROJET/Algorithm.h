@@ -18,16 +18,16 @@
 
 class Algorithm {
 	public:
-		Algorithm();
+		Algorithm(std::vector<Light> *lights, Scene *scene, Camera *camera);
 		virtual ~Algorithm();
 
 		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* r, Sphere* s);
 		Color phong_reflection_model(Vector* point, Vector* normal);
 
 	private:
-		std::vector<Light> lights;
-		Scene scene;
-		Camera camera;
+		std::vector<Light> *lights;
+		Scene *scene;
+		Camera *camera;
 };
 
 #endif /* ALGORITHM_H_ */
