@@ -21,6 +21,10 @@ Light::Light(Vector arg_source, Color arg_color) : source(arg_source), color(arg
 	id = 0;
 }
 
+const Vector* Light::getSource() const{
+	return(&source);
+}
+
 Light::~Light()
 {
     //dtor

@@ -11,6 +11,8 @@ class Light
         Light(Vector arg_source);
         Light(Vector arg_source, Color arg_color);
 
+        const Vector* getSource() const;
+
 
         void print() const;
 
