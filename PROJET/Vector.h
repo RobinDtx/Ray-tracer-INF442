@@ -42,9 +42,7 @@ class Vector
         bool operator==(const Vector& v);
         bool operator!=(const Vector& v);
         Vector& operator+=(const Vector& v);
-        Vector operator*(double l, Vector const& v);
-        Vector operator+(Vector const& v1, Vector const& v2);
-        Vector operator-(Vector const& v1, Vector const& v2);
+
 
 
 
