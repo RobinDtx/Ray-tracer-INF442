@@ -14,9 +14,18 @@ class Materiau {
 		Materiau(double ka, double kd, double ks, double alpha);
 		virtual ~Materiau();
 
-		double getKa() const;
-		double getKd() const;
-		double getKs() const;
+		double getKar() const;
+		double getKag() const;
+		double getKab() const;
+
+		double getKdr() const;
+		double getKdg() const;
+		double getKdb() const;
+
+		double getKsr() const;
+		double getKsg() const;
+		double getKsb() const;
+
 		double getAlpha() const;
 
 		void setKa(double ka);
@@ -25,9 +34,18 @@ class Materiau {
 		void setAlpha(double alpha);
 
 	private:
-		double ka; // composante ambiante
-		double kd; // composante diffuse
-		double ks; // composante spéculaire
+		double kar; // composante ambiante
+		double kag;
+		double kab;
+
+		double kdr; // composante diffuse
+		double kdg;
+		double kdb;
+
+		double ksr; // composante spéculaire
+		double ksg;
+		double ksb;
+
 		double alpha; // Brillance
 };
 
