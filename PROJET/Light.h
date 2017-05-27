@@ -10,13 +10,7 @@ class Light
         Light();
         Light(Vector arg_source);
         Light(Vector arg_source, Color arg_color);
-        Light(Vector arg_source, Color arg_color, double is, double id);
 
-        double getId() const;
-        double getIs() const;
-
-        void setId(double id);
-        void setIs(double is);
 
         void print() const;
 
@@ -27,8 +21,6 @@ class Light
     private:
         Vector source;
         Color color;
-        double id; // intensité diffuse
-        double is; // intensité spéculaire
 
 };
 
