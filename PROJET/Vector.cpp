@@ -18,7 +18,7 @@ Vector::Vector(double x, double y, double z)
     Z=z;
 }
 
-Vector::Vector(Vector* p1, Vector* p2){
+Vector::Vector(const Vector* p1, const Vector* p2){
 	X = p2->x()-p1->x();
 	Y = p2->y()-p2->y();
 	Z = p2->z()-p2->z();
@@ -94,7 +94,7 @@ double Vector::module() const
     return (sqrt(X*X+Y*Y+Z*Z));
 }
 
-static double Vector::scalar(Vector* p1, Vector* p2){
+double Vector::scalar(const Vector* p1, const Vector* p2){
 	return(p1->x()*p2->x() + p1->y()*p2->y() + p1->z()*p2->z());
 }
 
@@ -126,21 +126,7 @@ Vector& Vector::operator+=(const Vector& v){
 	return *this;
 }
 
-Vector operator*(double l, Vector const& v){
-	Vector copie(v);
-	copie.multiply(l);
-	return(copie);
-}
 
-Vector operator+(Vector const& v1, Vector const& v2){
-	Vector copie(v1);
-	copie += v2;
-	return(copie);
-}
-
-Vector operator-(Vector const& v1, Vector const& v2){
-	return(v1 + (-1)*v2);
-}
 
 
 Vector::~Vector()

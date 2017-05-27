@@ -10,7 +10,7 @@ class Vector
     public:
         Vector();
         Vector(double x, double y, double z);
-        Vector(Vector* p1, Vector* p2); //Construit le vecteur de p1 à p2
+        Vector(const Vector* p1, const Vector* p2); //Construit le vecteur de p1 à p2
         //Constructeur de copie deja cree
 
         //Getters
@@ -32,7 +32,7 @@ class Vector
 
         double module() const;
 
-        static double scalar(Vector* p1, Vector* p2);
+        static double scalar(const Vector* p1, const Vector* p2);
 
         //Affichage
         void print() const;

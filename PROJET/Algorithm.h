@@ -14,20 +14,22 @@
 #include "Light.h"
 #include "Scene.h"
 #include "Camera.h"
+#include "Materiau.h"
 
 
 class Algorithm {
 	public:
-		Algorithm(std::vector<Light> *lights, Scene *scene, Camera *camera);
+		Algorithm();
 		virtual ~Algorithm();
 
 		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* r, Sphere* s);
 		Color phong_reflection_model(Vector* point, Vector* normal);
 
 	private:
-		std::vector<Light> *lights;
-		Scene *scene;
-		Camera *camera;
+		std::vector<Light> lights;
+		Scene scene;
+		Camera camera;
+		Materiau materiau;
 };
 
 #endif /* ALGORITHM_H_ */

@@ -8,10 +8,7 @@
 #include "Algorithm.h"
 #include <math.h>
 
-Algorithm::Algorithm(std::vector<Light> *lights, Scene *scene, Camera *camera) {
-	this->lights = lights;
-	this->scene = scene;
-	this->camera = camera;
+Algorithm::Algorithm() {
 }
 
 Algorithm::~Algorithm() {
@@ -61,6 +58,69 @@ std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s
 			}
 		}
 	}
+}
+
+Vector operator*(double l, Vector const& v){
+	Vector copie(v);
+	copie.multiply(l);
+	return(copie);
+}
+
+Vector operator+(Vector const& v1, Vector const& v2){
+	Vector copie(v1);
+	copie += v2;
+	return(copie);
+}
+
+Vector operator-(Vector const& v1, Vector const& v2){
+	return(v1 + (-1)*v2);
+}
+
+Color Algorithm::phong_reflection_model(Vector* p, Vector* n){
+
+	double Ipr = 0;
+	double Ipg = 0;
+	double Ipb = 0;
+
+	double kar = materiau.getKar();
+	double kag = materiau.getKag();
+	double kab = materiau.getKab();
+
+	const Color* ia = scene.getIa();
+
+	Ipr = kar*ia->getRed();
+	Ipg = kag*ia->getGreen();
+	Ipb = kab*ia->getBlue();
+
+	Vector N(*n);
+	N.normalize();
+
+	Vector V(p, camera.getEye());
+
+	double kdr = materiau.getKdr();
+	double kdg = materiau.getKdg();
+	double kdb = materiau.getKdb();
+
+	double ksr = materiau.getKsr();
+	double ksg = materiau.getKsg();
+	double ksb = materiau.getKsb();
+
+	for(vector<Light>::iterator it = lights.begin(); it != lights.end(); it++){
+
+		const Color* color = it->getColor();
+		Vector L(p, it->getSource());
+		L.normalize();
+
+		Vector R = 2*Vector::scalar(&L, &N)*N - L;
+		R.normalize();
+
+		Ipr += kdr * Vector::scalar(&L, &N)*color->getRed() + ksr*Vector::scalar(&R, &V)*color->getRed();
+		Ipg += kdg * Vector::scalar(&L, &N)*color->getGreen() + ksg*Vector::scalar(&R, &V)*color->getGreen();
+		Ipb += kdb * Vector::scalar(&L, &N)*color->getBlue() + ksb*Vector::scalar(&R, &V)*color->getBlue();
+
+	}
+
+	return(Color(Ipr, Ipg, Ipb));
 }
 
 
