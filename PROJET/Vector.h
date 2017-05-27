@@ -10,6 +10,7 @@ class Vector
     public:
         Vector();
         Vector(double x, double y, double z);
+        Vector(Vector* p1, Vector* p2); //Construit le vecteur de p1 à p2
         //Constructeur de copie deja cree
 
         //Getters
@@ -27,6 +28,7 @@ class Vector
         void add(double x, double y, double z);
         void multiply(double d);
         bool equals(const Vector& v) const;
+        void normalize();
 
         double module() const;
 

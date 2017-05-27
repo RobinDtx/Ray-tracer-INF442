@@ -18,6 +18,12 @@ Vector::Vector(double x, double y, double z)
     Z=z;
 }
 
+Vector::Vector(Vector* p1, Vector* p2){
+	X = p2->x()-p1->x();
+	Y = p2->y()-p2->y();
+	Z = p2->z()-p2->z();
+}
+
 
 
 
@@ -74,6 +80,13 @@ void Vector::multiply(double d)
 bool Vector::equals(const Vector& v) const
 {
     return (X==v.x()&&Y==v.y()&&Z==v.z());
+}
+
+void Vector::normalize(){
+	double mod = this->module();
+	X = X/mod;
+	Y = Y/mod;
+	Z = Z/mod;
 }
 
 double Vector::module() const
