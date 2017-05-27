@@ -32,6 +32,8 @@ class Vector
 
         double module() const;
 
+        static double scalar(Vector* p1, Vector* p2);
+
         //Affichage
         void print() const;
         void print(std::ostream &flux) const;

@@ -94,6 +94,10 @@ double Vector::module() const
     return (sqrt(X*X+Y*Y+Z*Z));
 }
 
+static double Vector::scalar(Vector* p1, Vector* p2){
+	return(p1->x()*p2->x() + p1->y()*p2->y() + p1->z()*p2->z());
+}
+
 void Vector::print() const
 {
     std::cout << "x = " << X << " ; y = " << Y << " ; z = " << Z << std::endl;
