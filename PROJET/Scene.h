@@ -9,17 +9,17 @@ class Scene : public vector<Sphere>
 {
     public:
         Scene();
-        Scene(double ia);
+        Scene(Color* ia);
         virtual ~Scene();
 
-        double getIa() const;
-        void setIa();
+        const Color* getIa() const;
+        void setIa(Color *ia);
 
 
     protected:
 
     private:
-        double ia;
+        Color ia;
 
 };
 

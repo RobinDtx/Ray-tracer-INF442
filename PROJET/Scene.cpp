@@ -2,21 +2,25 @@
 
 Scene::Scene()
 {
-	ia = 0;
-    //ctor
+
 }
 
-Scene::Scene(double ia){
-	if(ia <0){
-		this-> ia = 0;
-	}
-	else{
-		this->ia = ia;
-	}
+Scene::Scene(Color* ia){
+	this->ia = Color(ia->getRed(), ia->getGreen(), ia->getBlue());
 }
 
 Scene::~Scene()
 {
     //dtor
+}
+
+const Color* Scene::getIa() const{
+	return(&ia);
+}
+
+void Scene::setIa(Color* ia){
+	this->ia.setRed(ia->getRed());
+	this->ia.setGreen(ia->getGreen());
+	this->ia.setBlue(ia->getBlue());
 }
 
