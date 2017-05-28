@@ -34,10 +34,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Algorithm.cpp" />
+		<Unit filename="Algorithm.h" />
+		<Unit filename="Camera.cpp" />
+		<Unit filename="Camera.h" />
 		<Unit filename="Color.cpp" />
 		<Unit filename="Color.h" />
 		<Unit filename="Light.cpp" />
 		<Unit filename="Light.h" />
+		<Unit filename="Materiau.cpp" />
+		<Unit filename="Materiau.h" />
 		<Unit filename="RayDataStructure.cpp" />
 		<Unit filename="RayDataStructure.h" />
 		<Unit filename="Scene.cpp" />

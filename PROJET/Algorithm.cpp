@@ -9,6 +9,8 @@
 #include <math.h>
 #include <algorithm>
 using namespace std;
+#include <iostream>
+using namespace std;
 
 Algorithm::Algorithm() {
 }
@@ -99,10 +101,19 @@ Color Algorithm::phong_reflection_model(Vector* p, Vector* n){
 	Ipg = kag*ia->getGreen();
 	Ipb = kab*ia->getBlue();
 
+	//cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+
+
 	Vector N(*n);
 	N.normalize();
 
 	Vector V(p, camera.getEye());
+	V.normalize();
+
+	cout << "Normalized N : " ;
+	N.print();
+	cout << "Normalized V : ";
+	V.print();
 
 	double kdr = materiau.getKdr();
 	double kdg = materiau.getKdg();
@@ -117,17 +128,25 @@ Color Algorithm::phong_reflection_model(Vector* p, Vector* n){
 		const Color* color = it->getColor();
 		Vector L(p, it->getSource());
 		L.normalize();
+		cout << "Normalized L : ";
+		L.print();
 
 		Vector R = 2*Vector::scalar(&L, &N)*N - L;
 		R.normalize();
+		cout << "Normalized R : ";
+		R.print();
 
 		double PS1 = Vector::scalar(&L, &N);
+		cout << "PS1 L.N : " << PS1 << endl;
 		double PS2 = max(0.,Vector::scalar(&R, &V));
+		cout << "PS2 R.V : " << PS1 << endl;
 		if (PS1<=0) {PS2=0;}
 
         Ipr += kdr * max(0.,PS1) * color->getRed() + ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
 		Ipg += kdg * max(0.,PS1) * color->getGreen() + ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
 		Ipb += kdb * max(0.,PS1) * color->getBlue() + ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
+
+		cout << Ipr << "/" << Ipg << "/" << Ipb << endl;
 
 	}
 

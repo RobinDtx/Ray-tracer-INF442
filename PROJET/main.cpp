@@ -33,7 +33,8 @@ std::ostream& operator<<(std::ostream &flux, const Vector& v )
 
 int main(int argc, char** argv)
 {
-	Vector test (1,2,3);
+	Vector test (0,0,0);
+
 	Color couleur (255,255,255);
 	Light light(test,couleur);
     light.print();
