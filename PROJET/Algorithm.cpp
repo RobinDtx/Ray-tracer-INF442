@@ -6,6 +6,7 @@
  */
 
 #include "Algorithm.h"
+#include <utility>
 #include <math.h>
 #include <algorithm>
 using namespace std;
@@ -24,7 +25,7 @@ Algorithm::Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_
 
 }
 
-std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
+std::pair<bool, Vector*> Algorithm::ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
 	// On écrit l'équation paramétrique de la droite
 	// On écrit l'équation cartésienne de la droite
 	// On résoud le système d'équation et on dit s'il existe une solution réelle au paramètre
@@ -153,8 +154,8 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 	return(Color(Ipr, Ipg, Ipb));
 }
 
-vector<vector<Color> >* Algorithm::ray_traced_algorithm(){
-	vector<vector<Color> > c;
+void Algorithm::ray_traced_algorithm(){
+
 	int width = camera.getWidth();
 	int heigh = camera.getHeigh();
 	Vector orientation(*camera.getOrientation());
@@ -176,8 +177,9 @@ vector<vector<Color> >* Algorithm::ray_traced_algorithm(){
 			bool intersect = false;
 			std::pair<bool, Vector*> p;
 			while((!intersect) && (it != scene.end())){
-				p = this->ray_sphere_intersection(&rd, &*it);
+				p = ray_sphere_intersection(&rd, &*it);
 				intersect = p.first;
+				it++;
 			}
 			if(intersect){
 				const Vector* p_on_sphere = p.second;
@@ -191,5 +193,5 @@ vector<vector<Color> >* Algorithm::ray_traced_algorithm(){
 		}
 		c.push_back(d);
 	}
-	return(&c);
+
 }

@@ -23,15 +23,16 @@ class Algorithm {
 		Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_camera, Materiau arg_materiau);
 		virtual ~Algorithm();
 
-		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* r, Sphere* s);
+		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s);
 		Color phong_reflection_model(const Vector* point, const Vector* normal);
-		vector<vector<Color> >* ray_traced_algorithm();
+		void ray_traced_algorithm();
 
 	private:
 		std::vector<Light> lights;
 		Scene scene;
 		Camera camera;
 		Materiau materiau;
+		std::vector<std::vector<Color> > c;
 };
 
 #endif /* ALGORITHM_H_ */

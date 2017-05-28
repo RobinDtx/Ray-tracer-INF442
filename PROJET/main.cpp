@@ -62,6 +62,7 @@ int main(int argc, char** argv)
     Algorithm algo(lights, scene, camera, materiau);
     algo.phong_reflection_model(&point,&normale).print();
 
+
 	//test2.add(0,0,1.5);
 	//test.multiply(1.1);
 //	if (test==test2)
