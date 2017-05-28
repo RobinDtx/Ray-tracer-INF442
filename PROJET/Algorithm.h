@@ -24,7 +24,8 @@ class Algorithm {
 		virtual ~Algorithm();
 
 		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* r, Sphere* s);
-		Color phong_reflection_model(Vector* point, Vector* normal);
+		Color phong_reflection_model(const Vector* point, const Vector* normal);
+		vector<vector<Color> >* ray_traced_algorithm();
 
 	private:
 		std::vector<Light> lights;

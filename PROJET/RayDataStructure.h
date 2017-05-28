@@ -12,7 +12,7 @@
 class RayDataStructure {
 	public:
 		RayDataStructure();
-		RayDataStructure(Vector *origin, Vector *direction);
+		RayDataStructure(const Vector *origin, const Vector *direction);
 		virtual ~RayDataStructure();
 		void setOrigin(Vector *origin);
 		void setDirection(Vector *direction);

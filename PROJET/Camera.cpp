@@ -15,7 +15,7 @@ Camera::Camera() {
 	orientation = Vector();
 }
 
-Camera::Camera(double heigh, double width){
+Camera::Camera(int heigh, int width){
 	this->heigh = heigh;
 	this->width = width;
 	eye = Vector();
@@ -31,7 +31,7 @@ Camera::Camera(Vector* eye, Vector* target, Vector* orientation){
 	this->orientation = Vector(orientation->x(), orientation->y(), orientation->z());
 }
 
-Camera::Camera(Vector* eye, Vector* target, Vector* orientation, double heigh, double width){
+Camera::Camera(Vector* eye, Vector* target, Vector* orientation, int heigh, int width){
 	this->heigh = heigh;
 	this->width = width;
 	this->eye = Vector(eye->x(), eye->y(), eye->z());
@@ -51,11 +51,11 @@ const Vector* Camera::getOrientation() const{
 	return(&orientation);
 }
 
-double Camera::getHeigh() const{
+int Camera::getHeigh() const{
 	return(heigh);
 }
 
-double Camera::getWidth() const{
+int Camera::getWidth() const{
 	return(width);
 }
 
@@ -77,11 +77,11 @@ void Camera::setOrientation(Vector* orientation){
 	this->orientation.setZ(orientation->z());
 }
 
-void Camera::setHeigh(double heigh){
+void Camera::setHeigh(int heigh){
 	this->heigh = heigh;
 }
 
-void Camera::setWidth(double width){
+void Camera::setWidth(int width){
 	this->width = width;
 }
 

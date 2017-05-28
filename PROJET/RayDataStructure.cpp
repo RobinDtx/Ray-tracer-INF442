@@ -16,7 +16,7 @@ RayDataStructure::~RayDataStructure() {
 	// TODO Auto-generated destructor stub
 }
 
-RayDataStructure::RayDataStructure(Vector *origin, Vector *direction){
+RayDataStructure::RayDataStructure(const Vector *origin, const Vector *direction){
 	this->origin = Vector(origin->x(), origin->y(), origin->z());
 	this->direction = Vector(direction->x(), direction->y(), direction->z());
 }

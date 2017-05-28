@@ -85,7 +85,7 @@ Vector operator-(Vector const& v1, Vector const& v2){
 	return(v1 + (-1)*v2);
 }
 
-Color Algorithm::phong_reflection_model(Vector* p, Vector* n){
+Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 
 	double Ipr = 0;
 	double Ipg = 0;
@@ -153,11 +153,43 @@ Color Algorithm::phong_reflection_model(Vector* p, Vector* n){
 	return(Color(Ipr, Ipg, Ipb));
 }
 
-
-
-
-
-
-
-
-
+vector<vector<Color> >* Algorithm::ray_traced_algorithm(){
+	vector<vector<Color> > c;
+	int width = camera.getWidth();
+	int heigh = camera.getHeigh();
+	Vector orientation(*camera.getOrientation());
+	orientation.normalize();
+	Vector direction(*camera.getTarget() - *camera.getEye());
+	direction.normalize();
+	Vector *abscisse_p = Vector::scalar_dot(&direction, &orientation);
+	Vector abscisse = *abscisse_p;
+	abscisse.normalize();
+	const Vector *eye = camera.getEye();
+	const Vector *target = camera.getTarget();
+	for (int i = 0; i< heigh; i++){
+		vector<Color> d;
+		for(int j = 0; j < width; j++){
+			Vector point_cible = *target + (heigh/2 - i) * orientation + (j-width/2) * abscisse;
+			Vector dir_cible = point_cible - *eye;
+			RayDataStructure rd(eye, &dir_cible);
+			vector<Sphere>::iterator it = scene.begin();
+			bool intersect = false;
+			std::pair<bool, Vector*> p;
+			while((!intersect) && (it != scene.end())){
+				p = this->ray_sphere_intersection(&rd, &*it);
+				intersect = p.first;
+			}
+			if(intersect){
+				const Vector* p_on_sphere = p.second;
+				Vector normal = *p_on_sphere - *(it->getCenter());
+				Color col = this->phong_reflection_model(p_on_sphere, &normal);
+				d.push_back(col);
+			}
+			else{
+				d.push_back(Color(255,255,255));
+			}
+		}
+		c.push_back(d);
+	}
+	return(&c);
+}
