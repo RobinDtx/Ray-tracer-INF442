@@ -20,8 +20,8 @@ Vector::Vector(double x, double y, double z)
 
 Vector::Vector(const Vector* p1, const Vector* p2){
 	X = p2->x()-p1->x();
-	Y = p2->y()-p2->y();
-	Z = p2->z()-p2->z();
+	Y = p2->y()-p1->y();
+	Z = p2->z()-p1->z();
 }
 
 

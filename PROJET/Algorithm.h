@@ -20,6 +20,7 @@
 class Algorithm {
 	public:
 		Algorithm();
+		Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_camera, Materiau arg_materiau);
 		virtual ~Algorithm();
 
 		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* r, Sphere* s);

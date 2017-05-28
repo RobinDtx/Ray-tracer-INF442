@@ -36,15 +36,17 @@
 		</Compiler>
 		<Unit filename="Color.cpp" />
 		<Unit filename="Color.h" />
+		<Unit filename="Light.cpp" />
+		<Unit filename="Light.h" />
 		<Unit filename="RayDataStructure.cpp" />
 		<Unit filename="RayDataStructure.h" />
+		<Unit filename="Scene.cpp" />
+		<Unit filename="Scene.h" />
 		<Unit filename="Sphere.cpp" />
 		<Unit filename="Sphere.h" />
 		<Unit filename="Vector.cpp" />
 		<Unit filename="Vector.h" />
-		<Unit filename="include/Scene.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Scene.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

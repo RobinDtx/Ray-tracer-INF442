@@ -7,12 +7,19 @@
 
 #include "Algorithm.h"
 #include <math.h>
+#include <algorithm>
+using namespace std;
 
 Algorithm::Algorithm() {
 }
 
 Algorithm::~Algorithm() {
 	// TODO Auto-generated destructor stub
+}
+
+Algorithm::Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_camera, Materiau arg_materiau) : lights(arg_lights), scene(arg_scene), camera(arg_camera), materiau(arg_materiau)
+{
+
 }
 
 std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
@@ -114,9 +121,13 @@ Color Algorithm::phong_reflection_model(Vector* p, Vector* n){
 		Vector R = 2*Vector::scalar(&L, &N)*N - L;
 		R.normalize();
 
-		Ipr += kdr * Vector::scalar(&L, &N)*color->getRed() + ksr*Vector::scalar(&R, &V)*color->getRed();
-		Ipg += kdg * Vector::scalar(&L, &N)*color->getGreen() + ksg*Vector::scalar(&R, &V)*color->getGreen();
-		Ipb += kdb * Vector::scalar(&L, &N)*color->getBlue() + ksb*Vector::scalar(&R, &V)*color->getBlue();
+		double PS1 = Vector::scalar(&L, &N);
+		double PS2 = max(0.,Vector::scalar(&R, &V));
+		if (PS1<=0) {PS2=0;}
+
+        Ipr += kdr * max(0.,PS1) * color->getRed() + ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
+		Ipg += kdg * max(0.,PS1) * color->getGreen() + ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
+		Ipb += kdb * max(0.,PS1) * color->getBlue() + ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
 
 	}
 

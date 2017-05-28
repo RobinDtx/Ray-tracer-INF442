@@ -1,13 +1,15 @@
 # depslib dependency file v1.0
-1495298024 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\main.cpp
+1496000200 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\main.cpp
 	<iostream>
 	"Vector.h"
 	"RayDataStructure.h"
 	"Color.h"
 	"Sphere.h"
 	"Scene.h"
+	"Light.h"
+	"Algorithm.h"
 
-1495296088 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\vector.h
+1495992633 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\vector.h
 	<iostream>
 
 1495294839 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\raydatastructure.cpp
@@ -24,7 +26,7 @@
 	"Vector.h"
 	"Color.h"
 
-1495037456 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\vector.cpp
+1495992633 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\vector.cpp
 	"Vector.h"
 	<iostream>
 	<math.h>
@@ -36,18 +38,44 @@
 	<algorithm>
 	<iostream>
 
-1495297975 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\scene.cpp
+1495992633 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\scene.cpp
 	"Scene.h"
 
-1495297973 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\scene.h
+1495992633 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\scene.h
 	"Sphere.h"
 	<vector>
 
-1495300756 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\light.cpp
+1495992633 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\light.cpp
 	"Light.h"
 	<iostream>
 
-1495300605 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\light.h
+1495993158 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\light.h
 	"Vector.h"
 	"Color.h"
+
+1495999234 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
+	"Algorithm.h"
+	<math.h>
+	<algorithm>
+
+1495996276 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.h
+	"RayDataStructure.h"
+	<utility>
+	<vector>
+	"Sphere.h"
+	"Light.h"
+	"Scene.h"
+	"Camera.h"
+	"Materiau.h"
+
+1495992633 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\camera.h
+	"Vector.h"
+
+1495992633 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\materiau.h
+
+1495992633 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\camera.cpp
+	"Camera.h"
+
+1495992633 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\materiau.cpp
+	"Materiau.h"
 
