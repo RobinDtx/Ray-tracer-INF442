@@ -76,7 +76,7 @@ std::pair<bool, std::pair<Vector*, double> > Algorithm::ray_sphere_intersection(
 
 
 
-Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
+Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const Sphere* s){
     //A besoin des 9 k et alpha, de la couleur ambiante, de l'oeil, des lights (couleur et position)
 
 	double Ipr = 0;
@@ -117,7 +117,24 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 	double ksb = materiau.getKsb();
 
 	for(vector<Light>::iterator it = lights.begin(); it != lights.end(); it++){
-
+		double coef = 1;
+		Vector *source = new Vector(*(it->getSource()));
+		for(vector<Sphere>::iterator jt = scene.begin(); jt != scene.end(); jt++){
+			if(&*jt != s){
+				Vector dir(*p - *source);
+				RayDataStructure *rd = new RayDataStructure(source, &dir);
+				std::pair<bool, std::pair<Vector*, double> > pa = ray_sphere_intersection(rd, &*jt);
+				if(pa.first){
+					Vector d1 = *p - *source;
+					double dist1 = d1.module();
+					Vector d2 = *pa.second.first - *source;
+					double dist2 = d2.module();
+					if(dist2 < dist1){
+						coef *= 0.2;
+					}
+				}
+			}
+		}
 		const Color* color = it->getColor();
 		Vector L(p, it->getSource());
 		L.normalize();
@@ -160,6 +177,10 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 		Ipg += ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
 		Ipb += ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
 
+		Ipr *= coef;
+		Ipg *= coef;
+		Ipb *= coef;
+
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
 	}
@@ -191,6 +212,7 @@ void Algorithm::ray_traced_algorithm(){
 			double t;
 			Vector* p_on_sphere;
 			Vector normal;
+			Sphere *s;
 			for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){
 				tmp = ray_sphere_intersection(&rd, &*it);
 				if(!intersect){
@@ -199,6 +221,7 @@ void Algorithm::ray_traced_algorithm(){
 						t = tmp.second.second;
 						p_on_sphere = tmp.second.first;
 						normal = *p_on_sphere - *(it->getCenter());
+						s = &*it;
 					}
 				}
 				else{
@@ -206,6 +229,7 @@ void Algorithm::ray_traced_algorithm(){
 						if(tmp.second.second < t){
 							p_on_sphere = tmp.second.first;
 							normal = *p_on_sphere - *(it->getCenter());
+							s = &*it;
 						}
 					}
 				}
@@ -232,7 +256,7 @@ void Algorithm::ray_traced_algorithm(){
 
 				//const Vector* p_on_sphere = p.second;
 				//Vector normal = *p_on_sphere - *(it->getCenter());
-				Color col = this->phong_reflection_model(p_on_sphere, &normal);
+				Color col = this->phong_reflection_model(p_on_sphere, &normal, s);
 				d.push_back(col);
 			}
 			else{
