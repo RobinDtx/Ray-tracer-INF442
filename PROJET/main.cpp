@@ -52,16 +52,39 @@ int main(int argc, char** argv)
     Materiau materiau (0.4,0.4,0,0.4,0.4,0,0.1,0.1,0.1,0.1);
 
 
-    Vector point(0,9,0);
-    Vector normale(0,-1,0);
+    Vector point(10,0,0);
+    Vector normale(-1,0,0);
 
     Vector eye(0,0,0);
     Vector target (100,0,0);
-    Vector up(0,1,1);
-    Camera camera(&eye, &target, &up, 800, 600);
+    Vector up(0,0,1);
+    Camera camera(&eye, &target, &up, 600, 800);
 
     Algorithm algo(lights, scene, camera, materiau);
-    //algo.phong_reflection_model(&point,&normale).print();
+    Color res = algo.phong_reflection_model(&point,&normale);
+    res.print();
+
+//    string const nomFichier("fichier/couleur.ppm");
+//	ofstream monFlux(nomFichier.c_str());
+//	if(monFlux){
+//		monFlux << "P3" << endl;
+//		monFlux << 1;
+//		monFlux << " ";
+//		monFlux << 1 << endl;
+//		monFlux << 255 << endl;
+//
+//				monFlux << res.getRed();
+//				monFlux << " ";
+//				monFlux << res.getGreen();
+//				monFlux << " ";
+//				monFlux << res.getBlue();
+//				monFlux << "\t";
+//				monFlux << endl;
+//
+//	}
+//	else{
+//		cout << "Problème" << endl;
+//	}
 
 
     algo.ray_traced_algorithm();
