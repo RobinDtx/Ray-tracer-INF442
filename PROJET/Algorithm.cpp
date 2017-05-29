@@ -192,15 +192,15 @@ void Algorithm::ray_traced_algorithm(){
 
 	int width = camera.getWidth();
 	int heigh = camera.getHeigh();
-	Vector orientation(*camera.getOrientation());
-	orientation.normalize();
-	Vector direction(*camera.getTarget() - *camera.getEye());
-	direction.normalize();
-	Vector *abscisse_p = Vector::vectorial_dot(&direction, &orientation);
-	Vector abscisse = *abscisse_p;
-	abscisse.normalize();
 	const Vector *eye = camera.getEye();
 	const Vector *target = camera.getTarget();
+	Vector orientation(*camera.getOrientation());
+	orientation.normalize();
+	Vector direction(*target - *eye);
+	direction.normalize();
+	Vector abscisse = *(Vector::vectorial_dot(&direction, &orientation));
+	abscisse.normalize();
+
 	for (int i = 0; i< heigh; i++){
 		vector<Color> d;
 		for(int j = 0; j < width; j++){
@@ -209,13 +209,13 @@ void Algorithm::ray_traced_algorithm(){
 			RayDataStructure rd(eye, &dir_cible);
 			bool intersect = false;
 			std::pair<bool, std::pair<Vector*, double> > tmp;
-			double t;
-			Vector* p_on_sphere;
-			Vector normal;
+			double t; //distance du point à l'oeil
+			Vector* p_on_sphere; //point sur la sphère
+			Vector normal; //normale
 			Sphere *s;
 			for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){
 				tmp = ray_sphere_intersection(&rd, &*it);
-				if(!intersect){
+				if(!intersect){ //si on a pas encore trouvé d'intersection
 					intersect = tmp.first;
 					if(tmp.first){
 						t = tmp.second.second;
@@ -225,8 +225,8 @@ void Algorithm::ray_traced_algorithm(){
 					}
 				}
 				else{
-					if(tmp.first){
-						if(tmp.second.second < t){
+					if(tmp.first){ //si on a intersecté
+						if(tmp.second.second < t){ //et qu'on est plus près
 							p_on_sphere = tmp.second.first;
 							normal = *p_on_sphere - *(it->getCenter());
 							s = &*it;
