@@ -31,7 +31,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-	Vector test (0,0,0);
+	Vector test (0,100,100);
 
 	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
@@ -40,13 +40,13 @@ int main(int argc, char** argv)
     std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
 
-    Sphere sphere(250, 0, 0, 50, 255, 255, 255);
-    Color intensiteAmbiante(255,255,255); //PAS DE LUMIERE AMBIANTE
+    Sphere sphere(100, 0, 0, 50, 255, 255, 255);
+    Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
 
 
-    Materiau materiau (0.4,0.4,0,0.4,0.4,0,0.1,0.1,0.1,0.1);
+    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
 
 
     Vector point(10,0,0);
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
     Vector eye(0,0,0);
     Vector target (100,0,0);
     Vector up(0,0,1);
-    Camera camera(&eye, &target, &up, 50, 50);
+    Camera camera(&eye, &target, &up, 1024, 2048);
 
     Algorithm algo(lights, scene, camera, materiau);
     Color res = algo.phong_reflection_model(&point,&normale);

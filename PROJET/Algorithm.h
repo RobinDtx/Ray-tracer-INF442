@@ -35,6 +35,7 @@ class Algorithm {
 		Camera camera;
 		Materiau materiau;
 		std::vector<std::vector<Color> > c;
+		bool debug = false;
 };
 
 #endif /* ALGORITHM_H_ */
