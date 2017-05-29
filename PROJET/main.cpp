@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
 
-    Sphere sphere(100, 0, 0, 50, 100, 100, 100);
+    Sphere sphere(100, 0, 0, 50, 255, 255, 255);
     Color intensiteAmbiante(0,0,0); //PAS DE LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
 
     Vector eye(0,0,0);
     Vector target (100,0,0);
-    Vector up(0,0,1);
+    Vector up(0,1,1);
     Camera camera(&eye, &target, &up, 800, 600);
 
     Algorithm algo(lights, scene, camera, materiau);

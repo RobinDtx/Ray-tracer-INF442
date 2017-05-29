@@ -91,6 +91,7 @@ Vector operator-(Vector const& v1, Vector const& v2){
 }
 
 Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
+    //A besoin des 9 k, de la couleur ambiante, de l'oeil, des lights (couleur et position)
 
 	double Ipr = 0;
 	double Ipg = 0;
@@ -144,7 +145,7 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 		double PS1 = Vector::scalar(&L, &N);
 		cout << "PS1 L.N : " << PS1 << endl;
 		double PS2 = max(0.,Vector::scalar(&R, &V));
-		cout << "PS2 R.V : " << PS1 << endl;
+		cout << "PS2 R.V : " << PS2 << endl;
 		if (PS1<=0) {PS2=0;}
 
         Ipr += kdr * max(0.,PS1) * color->getRed() + ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
