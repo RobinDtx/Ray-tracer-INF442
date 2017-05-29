@@ -91,7 +91,7 @@ Vector operator-(Vector const& v1, Vector const& v2){
 }
 
 Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
-    //A besoin des 9 k, de la couleur ambiante, de l'oeil, des lights (couleur et position)
+    //A besoin des 9 k et alpha, de la couleur ambiante, de l'oeil, des lights (couleur et position)
 
 	double Ipr = 0;
 	double Ipg = 0;
@@ -107,7 +107,7 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 	Ipg = kag*ia->getGreen();
 	Ipb = kab*ia->getBlue();
 
-	//cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+	cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
 
 
 	Vector N(*n);
@@ -148,9 +148,17 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 		cout << "PS2 R.V : " << PS2 << endl;
 		if (PS1<=0) {PS2=0;}
 
-        Ipr += kdr * max(0.,PS1) * color->getRed() + ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
-		Ipg += kdg * max(0.,PS1) * color->getGreen() + ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
-		Ipb += kdb * max(0.,PS1) * color->getBlue() + ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
+		cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+
+        Ipr += kdr * max(0.,PS1) * color->getRed();
+		Ipg += kdg * max(0.,PS1) * color->getGreen();
+		Ipb += kdb * max(0.,PS1) * color->getBlue();
+
+		cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+
+		Ipr += ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
+		Ipg += ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
+		Ipb += ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
 
 		cout << Ipr << "/" << Ipg << "/" << Ipb << endl;
 
@@ -206,9 +214,10 @@ void Algorithm::ecrire(){
 	ofstream monFlux(nomFichier.c_str());
 	if(monFlux){
 		monFlux << "P3" << endl;
-		monFlux << c.size();
+		monFlux << c[0].size();
 		monFlux << " ";
-		monFlux << c[0].size() << endl;
+		monFlux << c.size() << endl;
+		monFlux << 255 << endl;
 		for(vector<vector <Color> >::iterator i = c.begin(); i != c.end(); i++){
 			for(vector<Color>::iterator j = i->begin(); j != i->end(); j++){
 				monFlux << j->getRed();
