@@ -74,21 +74,7 @@ std::pair<bool, Vector*> Algorithm::ray_sphere_intersection(RayDataStructure* rd
 	}
 }
 
-Vector operator*(double l, Vector const& v){
-	Vector copie(v);
-	copie.multiply(l);
-	return(copie);
-}
 
-Vector operator+(Vector const& v1, Vector const& v2){
-	Vector copie(v1);
-	copie += v2;
-	return(copie);
-}
-
-Vector operator-(Vector const& v1, Vector const& v2){
-	return(v1 + (-1)*v2);
-}
 
 Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
     //A besoin des 9 k et alpha, de la couleur ambiante, de l'oeil, des lights (couleur et position)
@@ -106,9 +92,6 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 	Ipr = kar*ia->getRed();
 	Ipg = kag*ia->getGreen();
 	Ipb = kab*ia->getBlue();
-
-	cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
-
 
 	Vector N(*n);
 	N.normalize();
@@ -160,7 +143,7 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 		Ipg += ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
 		Ipb += ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
 
-		cout << Ipr << "/" << Ipg << "/" << Ipb << endl;
+		cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;
 
 	}
 
@@ -197,6 +180,12 @@ void Algorithm::ray_traced_algorithm(){
 			if(intersect){
 				const Vector* p_on_sphere = p.second;
 				Vector normal = *p_on_sphere - *(it->getCenter());
+				cout << "i : " << i << " j : " << j << endl << "Point de la sphere : ";
+				p_on_sphere->print();
+				cout << "Sphere : " << endl;
+				(*it).print();
+//				cout << "Centre de la sphere : ";
+//				it->getCenter()->print();
 				Color col = this->phong_reflection_model(p_on_sphere, &normal);
 				d.push_back(col);
 			}

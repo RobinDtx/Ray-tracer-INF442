@@ -54,6 +54,11 @@ class Vector
         double X,Y,Z;
 };
 
+Vector operator*(double l, Vector const& v);
+Vector operator+(Vector const& v1, Vector const& v2);
+Vector operator-(Vector const& v1, Vector const& v2);
+std::ostream& operator<<(std::ostream &flux, const Vector& v );
+
 
 
 

@@ -25,11 +25,8 @@ using namespace std;
 //using namespace cv;
 
 
-std::ostream& operator<<(std::ostream &flux, const Vector& v )
-{
-    v.print(flux);
-    return flux;
-}
+
+
 
 int main(int argc, char** argv)
 {
@@ -56,15 +53,18 @@ int main(int argc, char** argv)
     Vector normale(-1,0,0);
 
     Vector eye(0,0,0);
-    Vector target (100,0,0);
+    Vector target (10,0,0);
     Vector up(0,0,1);
-    Camera camera(&eye, &target, &up, 600, 800);
+    Camera camera(&eye, &target, &up, 50, 50);
 
     Algorithm algo(lights, scene, camera, materiau);
     Color res = algo.phong_reflection_model(&point,&normale);
     res.print();
 
-//    string const nomFichier("fichier/couleur.ppm");
+//    Vector tesuto = target - up;
+//    tesuto.print();
+
+//    string const nomFichier("fichier/couleur2.ppm");
 //	ofstream monFlux(nomFichier.c_str());
 //	if(monFlux){
 //		monFlux << "P3" << endl;
@@ -108,13 +108,13 @@ int main(int argc, char** argv)
 //    imshow(image_window, image_test);
 //    waitKey(0);
 
-	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
-	Sphere *s = new Sphere(new Vector(3,0,0), 1);
-	std::pair<bool, Vector*> p = algo.ray_sphere_intersection(rd, s);
-	cout << p.first << endl;
-	if(p.first){
-		p.second->print();
-	}
+//	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
+//	Sphere *s = new Sphere(new Vector(3,0,0), 1);
+//	std::pair<bool, Vector*> p = algo.ray_sphere_intersection(rd, s);
+//	cout << p.first << endl;
+//	if(p.first){
+//		p.second->print();
+//	}
 }
 
 

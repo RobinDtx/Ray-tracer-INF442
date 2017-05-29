@@ -139,4 +139,27 @@ Vector::~Vector()
 }
 
 
+Vector operator*(double l, Vector const& v){
+	Vector copie(v);
+	copie.multiply(l);
+	return(copie);
+}
+
+Vector operator+(Vector const& v1, Vector const& v2){
+	Vector copie(v1);
+	copie += v2;
+	return(copie);
+}
+
+Vector operator-(Vector const& v1, Vector const& v2){
+	return(v1 + (-1)*v2);
+}
+
+std::ostream& operator<<(std::ostream &flux, const Vector& v )
+{
+    v.print(flux);
+    return flux;
+}
+
+
 
