@@ -33,11 +33,12 @@ std::ostream& operator<<(std::ostream &flux, const Vector& v )
 
 int main(int argc, char** argv)
 {
+
 	Vector test (0,0,0);
 
 	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
-    light.print();
+   // light.print();
 
     std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
@@ -83,6 +84,14 @@ int main(int argc, char** argv)
 //    }
 //    imshow(image_window, image_test);
 //    waitKey(0);
+
+	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
+	Sphere *s = new Sphere(new Vector(3,0,0), 1);
+	std::pair<bool, Vector*> p = algo.ray_sphere_intersection(rd, s);
+	cout << p.first << endl;
+	if(p.first){
+		p.second->print();
+	}
 }
 
 
