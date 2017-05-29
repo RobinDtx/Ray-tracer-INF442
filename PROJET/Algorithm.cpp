@@ -99,10 +99,14 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 	Vector V(p, camera.getEye());
 	V.normalize();
 
-	cout << "Normalized N : " ;
-	N.print();
-	cout << "Normalized V : ";
-	V.print();
+    if (debug)
+    {
+        cout << "Normalized N : " ;
+        N.print();
+        cout << "Normalized V : ";
+        V.print();
+    }
+
 
 	double kdr = materiau.getKdr();
 	double kdg = materiau.getKdg();
@@ -117,33 +121,46 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n){
 		const Color* color = it->getColor();
 		Vector L(p, it->getSource());
 		L.normalize();
-		cout << "Normalized L : ";
-		L.print();
+		if(debug)
+        {
+            cout << "Normalized L : ";
+            L.print();
+        }
+
 
 		Vector R = 2*Vector::scalar(&L, &N)*N - L;
 		R.normalize();
-		cout << "Normalized R : ";
-		R.print();
+		if (debug) {
+            cout << "Normalized R : ";
+            R.print();
+		}
 
 		double PS1 = Vector::scalar(&L, &N);
-		cout << "PS1 L.N : " << PS1 << endl;
+
 		double PS2 = max(0.,Vector::scalar(&R, &V));
-		cout << "PS2 R.V : " << PS2 << endl;
+		if (debug)
+        {
+            cout << "PS1 L.N : " << PS1 << endl;
+            cout << "PS2 R.V : " << PS2 << endl;
+            cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+        }
+
 		if (PS1<=0) {PS2=0;}
 
-		cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+
 
         Ipr += kdr * max(0.,PS1) * color->getRed();
 		Ipg += kdg * max(0.,PS1) * color->getGreen();
 		Ipb += kdb * max(0.,PS1) * color->getBlue();
 
-		cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;
+		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;}
+
 
 		Ipr += ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
 		Ipg += ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
 		Ipb += ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
 
-		cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;
+		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
 	}
 
@@ -203,9 +220,13 @@ void Algorithm::ray_traced_algorithm(){
 			//	it++;
 			//}
 			if(intersect){
-				cout << "i : " << i << " j : " << j << endl << "Point de la sphere : ";
-				p_on_sphere->print();
-				cout << "Sphere : " << endl;
+				if (debug)
+                {
+                    cout << "i : " << i << " j : " << j << endl << "Point de la sphere : ";
+                    p_on_sphere->print();
+                    cout << "Sphere : " << endl;
+                }
+
 //				cout << "Centre de la sphere : ";
 //				it->getCenter()->print();
 

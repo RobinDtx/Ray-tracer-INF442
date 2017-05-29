@@ -31,8 +31,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-	Vector test (0,50,200);
-
+	Vector test (0,100,100);
 
 	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
@@ -48,13 +47,14 @@ int main(int argc, char** argv)
 
     Sphere sphere(250, 0, 0, 200, 255, 255, 255);
     Sphere sphere2(25,0,0,10,255,255,255);
-    Color intensiteAmbiante(255,255,255); //PAS DE LUMIERE AMBIANTE
+    Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
     scene.push_back(sphere2);
 
 
-    Materiau materiau (0.4,0.4,0,0.4,0.4,0,0.1,0.1,0.1,50);
+
+    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
 
 
     Vector point(10,0,0);
