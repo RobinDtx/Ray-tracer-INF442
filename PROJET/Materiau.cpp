@@ -75,6 +75,12 @@ Materiau::Materiau(double ka, double kd, double ks, double alpha){
 	this->alpha = alpha;
 }
 
+Materiau::Materiau(double Kar, double Kag, double Kab, double Kdr, double Kdg, double Kdb, double Ksr, double Ksg, double Ksb, double Alpha) :
+    kar(Kar), kag(Kag), kab(Kab), kdr(Kdr), kdg(Kdg), kdb(Kdb), ksr(Ksr), ksg(Ksg), ksb(Ksb), alpha(Alpha)
+{
+
+}
+
 
 double Materiau::getKar() const{
 	return(kar);

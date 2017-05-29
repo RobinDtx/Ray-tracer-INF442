@@ -35,20 +35,20 @@ int main(int argc, char** argv)
 {
 	Vector test (0,0,0);
 
-	Color couleur (255,255,255);
+	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
     light.print();
 
-    std::vector<Light> lights;
+    std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
 
-    Sphere sphere(100,0,0, 50, 100, 100, 100);
-    Color intensiteAmbiante(0,0,0);
+    Sphere sphere(100, 0, 0, 50, 100, 100, 100);
+    Color intensiteAmbiante(0,0,0); //PAS DE LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
 
 
-    Materiau materiau (0.5,0.5,0.5,1);
+    Materiau materiau (0.4,0.4,0,0.4,0.4,0,0.1,0.1,0.1,0.1);
 
 
     Vector point(0,9,0);
@@ -60,7 +60,9 @@ int main(int argc, char** argv)
     Camera camera(&eye, &target, &up, 800, 600);
 
     Algorithm algo(lights, scene, camera, materiau);
-    algo.phong_reflection_model(&point,&normale).print();
+    //algo.phong_reflection_model(&point,&normale).print();
+
+
     algo.ray_traced_algorithm();
     algo.ecrire();
 

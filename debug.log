@@ -1,0 +1,3 @@
+[0528/204659.213:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)
+[0528/204659.218:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: Le canal de communication a été fermé. (0x6D)
+[0528/204659.220:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\reports: Accès refusé. (0x5)

@@ -12,6 +12,7 @@ class Materiau {
 	public:
 		Materiau();
 		Materiau(double ka, double kd, double ks, double alpha);
+		Materiau(double Kar, double Kag, double Kab, double Kdr, double Kdg, double Kdb, double Ksr, double Ksg, double Ksb, double Alpha);
 		virtual ~Materiau();
 
 		double getKar() const;

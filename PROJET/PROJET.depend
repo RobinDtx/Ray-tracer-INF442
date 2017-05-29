@@ -53,16 +53,19 @@
 	"Vector.h"
 	"Color.h"
 
-1496006555 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
+1496049350 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
 	"Algorithm.h"
+	<utility>
 	<math.h>
 	<algorithm>
 	<iostream>
+	<string>
 
-1496007024 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.h
+1496049350 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.h
 	"RayDataStructure.h"
 	<utility>
 	<vector>
+	<fstream>
 	"Sphere.h"
 	"Light.h"
 	"Scene.h"
@@ -72,11 +75,11 @@
 1496003895 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\camera.h
 	"Vector.h"
 
-1495992633 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\materiau.h
+1496062126 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\materiau.h
 
 1496003895 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\camera.cpp
 	"Camera.h"
 
-1495992633 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\materiau.cpp
+1496062142 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\materiau.cpp
 	"Materiau.h"
 
