@@ -11,6 +11,7 @@
 #include <algorithm>
 using namespace std;
 #include <iostream>
+#include <string>
 using namespace std;
 
 Algorithm::Algorithm() {
@@ -194,4 +195,29 @@ void Algorithm::ray_traced_algorithm(){
 		c.push_back(d);
 	}
 
+}
+
+void Algorithm::ecrire(){
+	string const nomFichier("fichier/couleur.ppm");
+	ofstream monFlux(nomFichier.c_str());
+	if(monFlux){
+		monFlux << "P3" << endl;
+		monFlux << c.size();
+		monFlux << " ";
+		monFlux << c[0].size() << endl;
+		for(vector<vector <Color> >::iterator i = c.begin(); i != c.end(); i++){
+			for(vector<Color>::iterator j = i->begin(); j != i->end(); j++){
+				monFlux << j->getRed();
+				monFlux << " ";
+				monFlux << j->getGreen();
+				monFlux << " ";
+				monFlux << j->getBlue();
+				monFlux << "\t";
+			}
+			monFlux << endl;
+		}
+	}
+	else{
+		cout << "Problème" << endl;
+	}
 }

@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     std::vector<Light> lights;
     lights.push_back(light);
 
-    Sphere sphere(0,10,0, 1, 255, 255, 255);
+    Sphere sphere(100,0,0, 50, 100, 100, 100);
     Color intensiteAmbiante(0,0,0);
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
@@ -55,13 +55,14 @@ int main(int argc, char** argv)
     Vector normale(0,-1,0);
 
     Vector eye(0,0,0);
-    Vector target (0,10,0);
+    Vector target (100,0,0);
     Vector up(0,0,1);
-    Camera camera(&eye, &target, &up, 10, 10);
+    Camera camera(&eye, &target, &up, 800, 600);
 
     Algorithm algo(lights, scene, camera, materiau);
     algo.phong_reflection_model(&point,&normale).print();
-
+    algo.ray_traced_algorithm();
+    algo.ecrire();
 
 	//test2.add(0,0,1.5);
 	//test.multiply(1.1);

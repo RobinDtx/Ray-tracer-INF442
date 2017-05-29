@@ -10,6 +10,7 @@
 #include "RayDataStructure.h"
 #include <utility>
 #include <vector>
+#include <fstream>
 #include "Sphere.h"
 #include "Light.h"
 #include "Scene.h"
@@ -26,6 +27,7 @@ class Algorithm {
 		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s);
 		Color phong_reflection_model(const Vector* point, const Vector* normal);
 		void ray_traced_algorithm();
+		void ecrire();
 
 	private:
 		std::vector<Light> lights;
