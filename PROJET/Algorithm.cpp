@@ -216,7 +216,9 @@ void Algorithm::ecrire(){
 				monFlux << j->getGreen();
 				monFlux << " ";
 				monFlux << j->getBlue();
-				monFlux << "\t";
+				if(j<i->end()-1){
+					monFlux << "\t";
+				}
 			}
 			monFlux << endl;
 		}
