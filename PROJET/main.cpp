@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
 
-    Sphere sphere(100, 0, 0, 50, 255, 255, 255);
+    Sphere sphere(250, 0, 0, 50, 255, 255, 255);
     Color intensiteAmbiante(0,0,0); //PAS DE LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 //
 //	}
 //	else{
-//		cout << "Problème" << endl;
+//		cout << "Problï¿½me" << endl;
 //	}
 
 
@@ -110,10 +110,10 @@ int main(int argc, char** argv)
 
 	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
 	Sphere *s = new Sphere(new Vector(3,0,0), 1);
-	std::pair<bool, Vector*> p = algo.ray_sphere_intersection(rd, s);
+	std::pair<bool, std::pair<Vector*, double> > p = algo.ray_sphere_intersection(rd, s);
 	cout << p.first << endl;
 	if(p.first){
-		p.second->print();
+		p.second.first->print();
 	}
 }
 

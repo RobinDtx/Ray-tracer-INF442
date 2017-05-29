@@ -24,7 +24,7 @@ class Algorithm {
 		Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_camera, Materiau arg_materiau);
 		virtual ~Algorithm();
 
-		std::pair<bool, Vector*> ray_sphere_intersection(RayDataStructure* rd, Sphere* s);
+		std::pair<bool, std::pair<Vector*, double> > ray_sphere_intersection(RayDataStructure* rd, Sphere* s);
 		Color phong_reflection_model(const Vector* point, const Vector* normal); //A besoin des 9 k et alpha, de la couleur ambiante, de l'oeil, des lights (couleur et position)
 		void ray_traced_algorithm();
 		void ecrire();

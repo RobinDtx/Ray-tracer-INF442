@@ -26,7 +26,7 @@ Algorithm::Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_
 
 }
 
-std::pair<bool, Vector*> Algorithm::ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
+std::pair<bool, std::pair<Vector*, double> > Algorithm::ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
 	// On écrit l'équation paramétrique de la droite
 	// On écrit l'équation cartésienne de la droite
 	// On résoud le système d'équation et on dit s'il existe une solution réelle au paramètre
@@ -43,7 +43,7 @@ std::pair<bool, Vector*> Algorithm::ray_sphere_intersection(RayDataStructure* rd
 
 
 	if(delta < 0){
-		return(std::make_pair(false, new Vector()));
+		return(std::make_pair(false, std::make_pair(new Vector(), 0)));
 	}
 	double t1 = (-beta-sqrt(delta)) / (2*alpha);
 	double t2 = (-beta + sqrt(delta)) / (2*alpha);
@@ -53,22 +53,22 @@ std::pair<bool, Vector*> Algorithm::ray_sphere_intersection(RayDataStructure* rd
 
 	if(t1 < 0){
 		if(t2 <0){
-			return(std::make_pair(false, new Vector()));
+			return(std::make_pair(false, std::make_pair(new Vector(), 0)));
 		}
 		else{
-			return(std::make_pair(true, p2));
+			return(std::make_pair(true, std::make_pair(p2, t2)));
 		}
 	}
 	else{
 		if(t2 < 0){
-			return(std::make_pair(true, p1));
+			return(std::make_pair(true, std::make_pair(p1, t1)));
 		}
 		else{
 			if(t1 < t2){
-				return(std::make_pair(true, p1));
+				return(std::make_pair(true, std::make_pair(p1, t1)));
 			}
 			else{
-				return(std::make_pair(true, p2));
+				return(std::make_pair(true, std::make_pair(p2, t2)));
 			}
 		}
 	}
@@ -186,22 +186,47 @@ void Algorithm::ray_traced_algorithm(){
 			Vector point_cible = *target + (heigh/2 - i) * orientation + (j-width/2) * abscisse;
 			Vector dir_cible = point_cible - *eye;
 			RayDataStructure rd(eye, &dir_cible);
-			vector<Sphere>::iterator it = scene.begin();
 			bool intersect = false;
-			std::pair<bool, Vector*> p;
-			while((!intersect) && (it != scene.end())){
-				p = ray_sphere_intersection(&rd, &*it);
-				intersect = p.first;
-				it++;
+			std::pair<bool, std::pair<Vector*, double> > tmp;
+			double t;
+			Vector* p_on_sphere;
+			Vector normal;
+			for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){
+				tmp = ray_sphere_intersection(&rd, &*it);
+				if(!intersect){
+					intersect = tmp.first;
+					if(tmp.first){
+						t = tmp.second.second;
+						p_on_sphere = tmp.second.first;
+						normal = *p_on_sphere - *(it->getCenter());
+					}
+				}
+				else{
+					if(tmp.first){
+						if(tmp.second.second < t){
+							p_on_sphere = tmp.second.first;
+							normal = *p_on_sphere - *(it->getCenter());
+						}
+					}
+				}
 			}
+
+
+			//vector<Sphere>::iterator it = scene.begin();
+
+			//while((!intersect) && (it != scene.end())){
+			//	p = ray_sphere_intersection(&rd, &*it);
+			//	intersect = p.first;
+			//	it++;
+			//}
 			if(intersect){
-				const Vector* p_on_sphere = p.second;
-				Vector normal = *p_on_sphere - *(it->getCenter());
+				//const Vector* p_on_sphere = p.second;
+				//Vector normal = *p_on_sphere - *(it->getCenter());
 				Color col = this->phong_reflection_model(p_on_sphere, &normal);
 				d.push_back(col);
 			}
 			else{
-				d.push_back(Color(255,255,255));
+				d.push_back(*scene.getIa());
 			}
 		}
 		c.push_back(d);
