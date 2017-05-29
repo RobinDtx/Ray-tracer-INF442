@@ -167,7 +167,7 @@ void Algorithm::ray_traced_algorithm(){
 	orientation.normalize();
 	Vector direction(*camera.getTarget() - *camera.getEye());
 	direction.normalize();
-	Vector *abscisse_p = Vector::scalar_dot(&direction, &orientation);
+	Vector *abscisse_p = Vector::vectorial_dot(&direction, &orientation);
 	Vector abscisse = *abscisse_p;
 	abscisse.normalize();
 	const Vector *eye = camera.getEye();

@@ -34,7 +34,7 @@ class Vector
 
         static double scalar(const Vector* p1, const Vector* p2);
 
-        static Vector* scalar_dot(const Vector* p1, const Vector* p2);
+        static Vector* vectorial_dot(const Vector* p1, const Vector* p2);
 
         //Affichage
         void print() const;

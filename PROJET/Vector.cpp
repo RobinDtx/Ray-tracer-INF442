@@ -98,7 +98,7 @@ double Vector::scalar(const Vector* p1, const Vector* p2){
 	return(p1->x()*p2->x() + p1->y()*p2->y() + p1->z()*p2->z());
 }
 
-Vector* Vector::scalar_dot(const Vector* p1, const Vector* p2){
+Vector* Vector::vectorial_dot(const Vector* p1, const Vector* p2){
 	return(new Vector(p1->y() * p2->z() - p1->z() * p2->y(), p1->z() * p2->x() - p1->x() * p2->z(), p1->x() * p2->y() - p2->y()* p1->x()));
 }
 
