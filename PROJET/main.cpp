@@ -35,15 +35,23 @@ int main(int argc, char** argv)
 
 	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
+
+	Vector test2(0, -50, -200);
+	Color couleur2(255,0,0);
+	Light light2(test2, couleur2);
    // light.print();
 
     std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
+    lights.push_back(light2);
 
-    Sphere sphere(100, 0, 0, 50, 255, 255, 255);
+    Sphere sphere(250, 0, 0, 200, 255, 255, 255);
+    Sphere sphere2(25,0,0,10,255,255,255);
     Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
+    scene.push_back(sphere2);
+
 
 
     Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
