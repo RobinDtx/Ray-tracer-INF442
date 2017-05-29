@@ -48,24 +48,27 @@ std::pair<bool, Vector*> Algorithm::ray_sphere_intersection(RayDataStructure* rd
 	double t1 = (-beta-sqrt(delta)) / (2*alpha);
 	double t2 = (-beta + sqrt(delta)) / (2*alpha);
 
+	Vector *p1 = new Vector(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z());
+	Vector *p2 = new Vector(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z());
+
 	if(t1 < 0){
 		if(t2 <0){
 			return(std::make_pair(false, new Vector()));
 		}
 		else{
-			return(std::make_pair(true, new Vector(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z())));
+			return(std::make_pair(true, p2));
 		}
 	}
 	else{
 		if(t2 < 0){
-			return(std::make_pair(true, new Vector(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z())));
+			return(std::make_pair(true, p1));
 		}
 		else{
 			if(t1 < t2){
-				return(std::make_pair(true, new Vector(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z())));
+				return(std::make_pair(true, p1));
 			}
 			else{
-				return(std::make_pair(true, new Vector(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z())));
+				return(std::make_pair(true, p2));
 			}
 		}
 	}
