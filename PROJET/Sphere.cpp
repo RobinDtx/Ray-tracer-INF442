@@ -13,7 +13,7 @@ using namespace std;
 Sphere::Sphere() {
 	// TODO Auto-generated constructor stub
 	this->radius = 0;
-	this->materiau = new Materiau();
+	this->materiau = 0;
 	this->r = 0;
 }
 

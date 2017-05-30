@@ -60,27 +60,27 @@ std::pair<bool, std::pair<Vector*, double> > Algorithm::ray_sphere_intersection(
 	double t1 = (-beta-sqrt(delta)) / (2*alpha);
 	double t2 = (-beta + sqrt(delta)) / (2*alpha);
 
-	Vector p1(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z());
-	Vector p2(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z());
+	Vector *p1 = new Vector(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z());
+	Vector *p2 = new Vector(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z());
 
 	if(t1 < 0){
 		if(t2 <0){
 			return(std::make_pair(false, std::make_pair(new Vector(), 0)));
 		}
 		else{
-			return(std::make_pair(true, std::make_pair(&p2, t2)));
+			return(std::make_pair(true, std::make_pair(p2, t2)));
 		}
 	}
 	else{
 		if(t2 < 0){
-			return(std::make_pair(true, std::make_pair(&p1, t1)));
+			return(std::make_pair(true, std::make_pair(p1, t1)));
 		}
 		else{
 			if(t1 < t2){
-				return(std::make_pair(true, std::make_pair(&p1, t1)));
+				return(std::make_pair(true, std::make_pair(p1, t1)));
 			}
 			else{
-				return(std::make_pair(true, std::make_pair(&p2, t2)));
+				return(std::make_pair(true, std::make_pair(p2, t2)));
 			}
 		}
 	}
@@ -145,7 +145,6 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 						coef *= 0.2;
 					}
 				}
-                delete rd;
 			}
 		}
 		const Color* color = it->getColor();
@@ -192,7 +191,6 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
-        delete source;
 	}
 
 	return(Color(Ipr, Ipg, Ipb));

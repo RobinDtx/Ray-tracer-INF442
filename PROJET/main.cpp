@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 
 	Vector test (-1000000,100000,1000000);
 
-	Color couleur (100,100,100); //LUMIERE BLANCHE
+	Color couleur (255,255,255);
 	Light light(test,couleur);
 
 	Vector test2(-1000000, -100000, 100000);
@@ -41,14 +41,13 @@ int main(int argc, char** argv)
 	Light light2(test2, couleur2);
    // light.print();
 
-    std::vector<Light> lights; //UNE SEULE LUMIERE
+    std::vector<Light> lights;
     lights.push_back(light);
     lights.push_back(light2);
     Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
     Sphere sphere(0, 0, 0, 1000, &materiau);
     Sphere sphere2(-1500,-200,700,200,&materiau);
     Sphere sphere3(200, 200, 0, 100, &materiau);
-    Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
     Scene scene;
     scene.push_back(sphere);
     scene.push_back(sphere2);
@@ -62,7 +61,7 @@ int main(int argc, char** argv)
 
     Algorithm algo(lights, scene, camera, materiau);
     algo.ray_traced_algorithm();
-    algo.ecrire("rouge+gris");
+    algo.ecrire("problème");
 
 
 //	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
