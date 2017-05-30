@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 
 	Vector test (-1000000,100000,1000000);
 
-	Color couleur (255,255,255); //LUMIERE BLANCHE
+	Color couleur (100,100,100); //LUMIERE BLANCHE
 	Light light(test,couleur);
 
 	Vector test2(-1000000, -100000, 100000);
@@ -49,21 +49,11 @@ int main(int argc, char** argv)
     Sphere sphere2(-1500,-200,700,200,&materiau);
     Sphere sphere3(200, 200, 0, 100, &materiau);
     Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
-    Scene scene(&intensiteAmbiante);
+    Scene scene;
     scene.push_back(sphere);
     scene.push_back(sphere2);
     //scene.push_back(sphere3);
 
-    Color ia((couleur.getRed()+couleur2.getRed())/2, (couleur.getGreen()+couleur2.getGreen())/2, (couleur.getBlue()+couleur2.getBlue())/2);
-    scene.setIa(&ia);
-
-
-
-
-
-
-    Vector point(10,0,0);
-    Vector normale(-1,0,0);
 
     Vector eye(-100000,0,0);
     Vector target (0,0,0);
@@ -71,56 +61,10 @@ int main(int argc, char** argv)
     Camera camera(&eye, &target, &up, 2160, 3180);
 
     Algorithm algo(lights, scene, camera, materiau);
-    // Color res = algo.phong_reflection_model(&point,&normale);
-    // res.print();
-
-//    Vector tesuto = target - up;
-//    tesuto.print();
-
-//    string const nomFichier("fichier/couleur2.ppm");
-//	ofstream monFlux(nomFichier.c_str());
-//	if(monFlux){
-//		monFlux << "P3" << endl;
-//		monFlux << 1;
-//		monFlux << " ";
-//		monFlux << 1 << endl;
-//		monFlux << 255 << endl;
-//
-//				monFlux << res.getRed();
-//				monFlux << " ";
-//				monFlux << res.getGreen();
-//				monFlux << " ";
-//				monFlux << res.getBlue();
-//				monFlux << "\t";
-//				monFlux << endl;
-//
-//	}
-//	else{
-//		cout << "Probl�me" << endl;
-//	}
-
-
     algo.ray_traced_algorithm();
-    algo.ecrire();
+    algo.ecrire("rouge+gris");
 
-	//test2.add(0,0,1.5);
-	//test.multiply(1.1);
-//	if (test==test2)
-//	{
-//	    std::cout << test.module();
-//	}
 
-//    char image_window[] = "Drawing: test";
-//    Mat image_test = Mat::zeros(400,400, CV_8UC3);
-//    Vec3b couleurp = Vec3b(100,0,0);
-//    for(int i = 150; i< 250; i++){
-//    	for(int j = 150; j < 250; j++){
-//    		image_test.at<Vec3b>(i,j) = couleurp;
-//    	}
-//    }
-//    imshow(image_window, image_test);
-//    waitKey(0);
-//
 //	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
 //	Sphere *s = new Sphere(new Vector(3,0,0), 1);
 //	std::pair<bool, std::pair<Vector*, double> > p = algo.ray_sphere_intersection(rd, s);

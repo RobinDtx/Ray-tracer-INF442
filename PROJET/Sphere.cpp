@@ -43,6 +43,7 @@ Sphere::Sphere(double x, double y, double z, double radius, Materiau *materiau){
 
 Sphere::~Sphere() {
 	// TODO Auto-generated destructor stub
+    delete materiau;
 }
 
 
