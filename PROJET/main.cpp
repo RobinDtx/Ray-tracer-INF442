@@ -31,7 +31,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-	Vector test (-1000000,100000,100000);
+	Vector test (-1000000,100000,1000000);
 
 	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
@@ -44,10 +44,10 @@ int main(int argc, char** argv)
     std::vector<Light> lights; //UNE SEULE LUMIERE
     lights.push_back(light);
     lights.push_back(light2);
-
-    Sphere sphere(0, 0, 0, 1000, 255, 255, 255);
-    Sphere sphere2(-1500,-200,0,200,255,255,255);
-    Sphere sphere3(200, 200, 0, 100, 255, 255, 255);
+    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
+    Sphere sphere(0, 0, 0, 1000, &materiau);
+    Sphere sphere2(-1500,-200,700,200,&materiau);
+    Sphere sphere3(200, 200, 0, 100, &materiau);
     Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
     scene.push_back(sphere);
@@ -59,7 +59,7 @@ int main(int argc, char** argv)
 
 
 
-    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
+
 
 
     Vector point(10,0,0);
