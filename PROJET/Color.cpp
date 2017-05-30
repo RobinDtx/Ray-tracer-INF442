@@ -57,54 +57,54 @@ void Color::print() const
     cout << "RGB " << getRed() << "/" << getGreen() << "/" << getBlue() << endl;
 }
 
-//Color& Color::operator*=(double l){
-//	setRed(l*red);
-//	setGreen(l*green);
-//	setBlue(l*blue);
-//	return *this;
-//}
-//
-//Color& Color::operator/=(double l){
-//	setRed(red/l);
-//	setGreen(green/l);
-//	setBlue(blue/l);
-//	return(*this);
-//}
-//
-//Color& Color::operator+=(const Color& c){
-//	setRed(red + c.getRed());
-//	setGreen(green + c.getGreen());
-//	setBlue(blue + c.getBlue());
-//	return(*this);
-//}
-//
-//Color& Color::operator-=(const Color& c){
-//	setRed(red - c.getRed());
-//	setGreen(green - c.getGreen());
-//	setBlue(blue - c.getBlue());
-//	return(*this);
-//}
-//
-//Color operator*(double l, Color const& c){
-//	Color copie(c);
-//	copie *= l;
-//	return(copie);
-//}
-//
-//Color operator/(Color const& c, double l){
-//	Color copie(c);
-//	copie /= l;
-//	return(copie);
-//}
-//
-//Color operator+(Color const& c1, Color const& c2){
-//	Color copie(c1);
-//	copie += c2;
-//	return(copie);
-//}
-//
-//Color operator-(Color const& c1, Color const& c2){
-//	Color copie(c1);
-//	copie -= c2;
-//	return(copie);
-//}
+Color& Color::operator*=(double l){
+	setRed(l*red);
+	setGreen(l*green);
+	setBlue(l*blue);
+	return *this;
+}
+
+Color& Color::operator/=(double l){
+	setRed(red/l);
+	setGreen(green/l);
+	setBlue(blue/l);
+	return(*this);
+}
+
+Color& Color::operator+=(const Color& c){
+	setRed(red + c.getRed());
+	setGreen(green + c.getGreen());
+	setBlue(blue + c.getBlue());
+	return(*this);
+}
+
+Color& Color::operator-=(const Color& c){
+	setRed(red - c.getRed());
+	setGreen(green - c.getGreen());
+	setBlue(blue - c.getBlue());
+	return(*this);
+}
+
+Color operator*(double l, Color const& c){
+	Color copie(c);
+	copie *= l;
+	return(copie);
+}
+
+Color operator/(Color const& c, double l){
+	Color copie(c);
+	copie /= l;
+	return(copie);
+}
+
+Color operator+(Color const& c1, Color const& c2){
+	Color copie(c1);
+	copie += c2;
+	return(copie);
+}
+
+Color operator-(Color const& c1, Color const& c2){
+	Color copie(c1);
+	copie -= c2;
+	return(copie);
+}

@@ -145,6 +145,7 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 						coef *= 0.2;
 					}
 				}
+				delete rd;
 			}
 		}
 		const Color* color = it->getColor();
@@ -190,6 +191,8 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 		Ipb += (ksb * pow(PS2, materiau.getAlpha()) * color->getBlue())*coef;
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
+
+    delete source;
 
 	}
 
