@@ -23,7 +23,19 @@ Algorithm::~Algorithm() {
 
 Algorithm::Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_camera, Materiau arg_materiau) : lights(arg_lights), scene(arg_scene), camera(arg_camera), materiau(arg_materiau)
 {
+    double red, green, blue;
+    for (std::vector<Light>::iterator it = lights.begin();it!=lights.end();it++)
+    {
+        red+=it->getColor()->getRed();
+        green+=it->getColor()->getGreen();
+        blue+=it->getColor()->getBlue();
+    }
 
+    red/=lights.size();
+    green/=lights.size();
+    blue/=lights.size();
+    Color couleur(red,green,blue);
+    scene.setIa(&couleur);
 }
 
 std::pair<bool, std::pair<Vector*, double> > Algorithm::ray_sphere_intersection(RayDataStructure* rd, Sphere* s){
@@ -48,27 +60,27 @@ std::pair<bool, std::pair<Vector*, double> > Algorithm::ray_sphere_intersection(
 	double t1 = (-beta-sqrt(delta)) / (2*alpha);
 	double t2 = (-beta + sqrt(delta)) / (2*alpha);
 
-	Vector *p1 = new Vector(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z());
-	Vector *p2 = new Vector(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z());
+	Vector p1(o->x() + t1* d->x(), o->y() + t1*d->y(), o->z() + t1*d->z());
+	Vector p2(o->x() + t2* d->x(), o->y() + t2*d->y(), o->z() + t2*d->z());
 
 	if(t1 < 0){
 		if(t2 <0){
 			return(std::make_pair(false, std::make_pair(new Vector(), 0)));
 		}
 		else{
-			return(std::make_pair(true, std::make_pair(p2, t2)));
+			return(std::make_pair(true, std::make_pair(&p2, t2)));
 		}
 	}
 	else{
 		if(t2 < 0){
-			return(std::make_pair(true, std::make_pair(p1, t1)));
+			return(std::make_pair(true, std::make_pair(&p1, t1)));
 		}
 		else{
 			if(t1 < t2){
-				return(std::make_pair(true, std::make_pair(p1, t1)));
+				return(std::make_pair(true, std::make_pair(&p1, t1)));
 			}
 			else{
-				return(std::make_pair(true, std::make_pair(p2, t2)));
+				return(std::make_pair(true, std::make_pair(&p2, t2)));
 			}
 		}
 	}
@@ -133,6 +145,7 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 						coef *= 0.2;
 					}
 				}
+                delete rd;
 			}
 		}
 		const Color* color = it->getColor();
@@ -166,23 +179,20 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 
 
 
-        Ipr += kdr * max(0.,PS1) * color->getRed();
-		Ipg += kdg * max(0.,PS1) * color->getGreen();
-		Ipb += kdb * max(0.,PS1) * color->getBlue();
+        Ipr += (kdr * max(0.,PS1) * color->getRed())*coef;
+		Ipg += (kdg * max(0.,PS1) * color->getGreen())*coef;
+		Ipb += (kdb * max(0.,PS1) * color->getBlue())*coef;
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;}
 
 
-		Ipr += ksr * pow(PS2, materiau.getAlpha()) * color->getRed();
-		Ipg += ksg * pow(PS2, materiau.getAlpha()) * color->getGreen();
-		Ipb += ksb * pow(PS2, materiau.getAlpha()) * color->getBlue();
-
-		Ipr *= coef;
-		Ipg *= coef;
-		Ipb *= coef;
+		Ipr += (ksr * pow(PS2, materiau.getAlpha()) * color->getRed())*coef;
+		Ipg += (ksg * pow(PS2, materiau.getAlpha()) * color->getGreen())*coef;
+		Ipb += (ksb * pow(PS2, materiau.getAlpha()) * color->getBlue())*coef;
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
+        delete source;
 	}
 
 	return(Color(Ipr, Ipg, Ipb));
@@ -268,8 +278,8 @@ void Algorithm::ray_traced_algorithm(){
 
 }
 
-void Algorithm::ecrire(){
-	string const nomFichier("fichier/couleur.ppm");
+void Algorithm::ecrire(string nom){
+	string const nomFichier("fichier/"+nom+".ppm");
 	ofstream monFlux(nomFichier.c_str());
 	if(monFlux){
 		monFlux << "P3" << endl;
