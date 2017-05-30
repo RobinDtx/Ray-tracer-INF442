@@ -20,28 +20,28 @@ Sphere::Sphere() {
 Sphere::Sphere(Vector *center, double radius){
 	this->center = Vector(center->x(), center->y(), center->z());
 	this->radius = radius;
-	this->materiau = new Materiau();
+	this->materiau = 0;
 	this->r = 0;
 }
 
 Sphere::Sphere(Vector *center, double radius, double r){
 	this->center = Vector(center->x(), center->y(), center->z());
 	this->radius = radius;
-	this->materiau = new Materiau();
+	this->materiau = 0;
 	setR(r);
 }
 
 Sphere::Sphere(double x, double y, double z, double radius){
 	this->center = Vector(x, y, z);
 	this->radius = radius;
-	this->materiau = new Materiau();
+	this->materiau = 0;
 	this->r = 0;
 }
 
 Sphere::Sphere(double x, double y, double z, double radius, double r){
 	this->center = Vector(x, y, z);
 	this->radius = radius;
-	this->materiau = new Materiau();
+	this->materiau = 0;
 	setR(r);
 }
 
@@ -76,7 +76,6 @@ Sphere::Sphere(double x, double y, double z, double radius, Materiau *materiau, 
 
 Sphere::~Sphere() {
 	// TODO Auto-generated destructor stub
-    delete materiau;
 }
 
 
