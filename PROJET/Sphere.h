@@ -15,9 +15,13 @@ class Sphere {
 	public:
 		Sphere();
 		Sphere(Vector *center, double radius);
+		Sphere(Vector *center, double radius, double r);
 		Sphere(double x, double y, double z, double radius);
+		Sphere(double x, double y, double z, double radius, double r);
 		Sphere(Vector *center, double radius, Materiau *materiau);
+		Sphere(Vector *center, double radius, Materiau *materiau, double r);
 		Sphere(double x, double y, double z, double radius, Materiau *materiau);
+		Sphere(double x, double y, double z, double radius, Materiau *materiau, double r);
 		virtual ~Sphere();
 
 		void setCenter(Vector *center);
@@ -30,9 +34,12 @@ class Sphere {
 
 		void setMateriau(Materiau* materiau);
 
+		void setR(double r);
+
 		const Vector* getCenter() const;
 		double getRadius() const;
 		const Materiau* getMateriau() const;
+		double getR() const;
 
 		void print() const;
 
@@ -42,6 +49,7 @@ class Sphere {
 		Vector center;
 		double radius;
 		Materiau* materiau;
+		double r;
 };
 
 #endif /* SPHERE_H_ */

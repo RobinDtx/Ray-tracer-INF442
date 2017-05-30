@@ -14,30 +14,63 @@ Sphere::Sphere() {
 	// TODO Auto-generated constructor stub
 	this->radius = 0;
 	this->materiau = new Materiau();
+	this->r = 0;
 }
 
 Sphere::Sphere(Vector *center, double radius){
 	this->center = Vector(center->x(), center->y(), center->z());
 	this->radius = radius;
 	this->materiau = new Materiau();
+	this->r = 0;
+}
+
+Sphere::Sphere(Vector *center, double radius, double r){
+	this->center = Vector(center->x(), center->y(), center->z());
+	this->radius = radius;
+	this->materiau = new Materiau();
+	setR(r);
 }
 
 Sphere::Sphere(double x, double y, double z, double radius){
 	this->center = Vector(x, y, z);
 	this->radius = radius;
 	this->materiau = new Materiau();
+	this->r = 0;
+}
+
+Sphere::Sphere(double x, double y, double z, double radius, double r){
+	this->center = Vector(x, y, z);
+	this->radius = radius;
+	this->materiau = new Materiau();
+	setR(r);
 }
 
 Sphere::Sphere(Vector *center, double radius, Materiau *materiau){
 	this->center=  Vector(center->x(), center->y(), center->z());
 	this->radius = radius;
 	this->materiau = materiau;
+	this->r = 0;
+}
+
+Sphere::Sphere(Vector *center, double radius, Materiau *materiau, double r){
+	this->center=  Vector(center->x(), center->y(), center->z());
+	this->radius = radius;
+	this->materiau = materiau;
+	setR(r);
 }
 
 Sphere::Sphere(double x, double y, double z, double radius, Materiau *materiau){
 	this->center = Vector(x,y,z);
 	this->radius = radius;
 	this->materiau = materiau;
+	this->r = 0;
+}
+
+Sphere::Sphere(double x, double y, double z, double radius, Materiau *materiau, double r){
+	this->center = Vector(x,y,z);
+	this->radius = radius;
+	this->materiau = materiau;
+	setR(r);
 }
 
 
@@ -79,6 +112,18 @@ void Sphere::setMateriau(Materiau *materiau){
 	this->materiau = materiau;
 }
 
+void Sphere::setR(double r){
+	if(r<0){
+		this->r = 0;
+	}
+	else if(r>1){
+		this->r = 1;
+	}
+	else{
+		this->r = 0;
+	}
+}
+
 
 
 //Getters
@@ -93,6 +138,10 @@ double Sphere::getRadius() const{
 
 const Materiau* Sphere::getMateriau() const{
 	return(materiau);
+}
+
+double Sphere::getR() const{
+	return(r);
 }
 
 
