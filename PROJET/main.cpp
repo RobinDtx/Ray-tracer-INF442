@@ -31,12 +31,12 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-	Vector test (0,50,200);
+	Vector test (-1000000,100000,100000);
 
 	Color couleur (255,255,255); //LUMIERE BLANCHE
 	Light light(test,couleur);
 
-	Vector test2(0, -50, -200);
+	Vector test2(-1000000, -100000, 100000);
 	Color couleur2(255,0,100);
 	Light light2(test2, couleur2);
    // light.print();
@@ -45,8 +45,8 @@ int main(int argc, char** argv)
     lights.push_back(light);
     lights.push_back(light2);
 
-    Sphere sphere(2000, 0, 0, 1500, 255, 255, 255);
-    Sphere sphere2(200,0,0,100,255,255,255);
+    Sphere sphere(0, 0, 0, 1000, 255, 255, 255);
+    Sphere sphere2(-1500,-200,0,200,255,255,255);
     Sphere sphere3(200, 200, 0, 100, 255, 255, 255);
     Color intensiteAmbiante(255,255,255);// LUMIERE AMBIANTE
     Scene scene(&intensiteAmbiante);
@@ -65,10 +65,10 @@ int main(int argc, char** argv)
     Vector point(10,0,0);
     Vector normale(-1,0,0);
 
-    Vector eye(0,0,0);
-    Vector target (100,0,0);
+    Vector eye(-100000,0,0);
+    Vector target (0,0,0);
     Vector up(0,0,1);
-    Camera camera(&eye, &target, &up, 2048, 4096);
+    Camera camera(&eye, &target, &up, 2160, 3180);
 
     Algorithm algo(lights, scene, camera, materiau);
     // Color res = algo.phong_reflection_model(&point,&normale);
