@@ -145,6 +145,7 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 						coef *= 0.2;
 					}
 				}
+				delete rd;
 			}
 		}
 		const Color* color = it->getColor();
@@ -191,6 +192,8 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
+    delete source;
+
 	}
 
 	return(Color(Ipr, Ipg, Ipb));
@@ -221,7 +224,7 @@ void Algorithm::ray_traced_algorithm(){
 			Vector* p_on_sphere; //point sur la sphère
 			Vector normal; //normale
 			Sphere *s;
-			for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){
+			for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){ //on regarde la plus proche sphère qui intersecte
 				tmp = ray_sphere_intersection(&rd, &*it);
 				if(!intersect){ //si on a pas encore trouvé d'intersection
 					intersect = tmp.first;
@@ -243,28 +246,72 @@ void Algorithm::ray_traced_algorithm(){
 				}
 			}
 
-
-			//vector<Sphere>::iterator it = scene.begin();
-
-			//while((!intersect) && (it != scene.end())){
-			//	p = ray_sphere_intersection(&rd, &*it);
-			//	intersect = p.first;
-			//	it++;
-			//}
 			if(intersect){
-				if (debug)
-                {
-                    cout << "i : " << i << " j : " << j << endl << "Point de la sphere : ";
-                    p_on_sphere->print();
-                    cout << "Sphere : " << endl;
+//				if (debug)
+//                {
+//                    cout << "i : " << i << " j : " << j << endl << "Point de la sphere : ";
+//                    p_on_sphere->print();
+//                    cout << "Sphere : " << endl;
+//                    s->print();
+//                }
+
+				Color col = this->phong_reflection_model(p_on_sphere, &normal, s);
+				/*col*=1-s->getR();
+
+				Vector point(*p_on_sphere);
+
+				Vector N(normal);
+				N.normalize();
+				Vector V(*eye-point);
+
+				V.normalize();
+				Vector R = 2*Vector::scalar(&V, &N)*N - V;
+				R.normalize();
+
+				RayDataStructure reflechi(&point,&R);
+				std::pair<bool, std::pair<Vector*, double> > paire;
+				bool intersectionReflechi = false;
+				double distance;
+				Sphere *sphereReflechi;
+
+
+
+				for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){ //on regarde la plus proche sphère qui intersecte
+                    if (&*it!=s)
+                    {
+
+
+                    paire = ray_sphere_intersection(&reflechi, &*it);
+                    if(!intersectionReflechi){ //si on a pas encore trouvé d'intersection
+                        intersectionReflechi = paire.first;
+                        if(paire.first){
+                            distance = paire.second.second;
+                            point = *paire.second.first;
+                            N = point - *(it->getCenter());
+                            sphereReflechi = &*it;
+                        }
+                    }
+                    else{
+                        if(paire.first){ //si on a intersecté
+                            if(paire.second.second < distance){ //et qu'on est plus près
+                                point = *paire.second.first;
+                                N = point - *(it->getCenter());
+                                sphereReflechi = &*it;
+                            }
+                        }
+                    }
+                    }
                 }
 
-//				cout << "Centre de la sphere : ";
-//				it->getCenter()->print();
+                if (intersectionReflechi)
+                {
+                    //sphereReflechi->print();
+                    Color test = phong_reflection_model(&point,&N,sphereReflechi);
+                    //test.print();
+                    col+=s->getR()*test;
+                }
+                */
 
-				//const Vector* p_on_sphere = p.second;
-				//Vector normal = *p_on_sphere - *(it->getCenter());
-				Color col = this->phong_reflection_model(p_on_sphere, &normal, s);
 				d.push_back(col);
 			}
 			else{

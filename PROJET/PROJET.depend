@@ -32,9 +32,9 @@
 	<iostream>
 	<math.h>
 
-1496158003 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\color.h
+1496158577 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\color.h
 
-1496158003 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\color.cpp
+1496158550 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\color.cpp
 	"Color.h"
 	<algorithm>
 	<iostream>
@@ -54,7 +54,7 @@
 	"Vector.h"
 	"Color.h"
 
-1496157852 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
+1496158278 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
 	"Algorithm.h"
 	<utility>
 	<math.h>
