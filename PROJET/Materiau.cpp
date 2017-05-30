@@ -6,6 +6,9 @@
  */
 
 #include "Materiau.h"
+#include <iostream>
+
+using namespace std;
 
 Materiau::Materiau() {
 	kar = 0;
@@ -178,6 +181,12 @@ void Materiau::setKs(double ks){
 
 void Materiau::setAlpha(double alpha){
 	this->alpha = alpha;
+}
+
+void Materiau::print() const{
+	cout << "kar : " << kar << " kag : " << kag << " kab : " << kab << endl;
+	cout << "kdr : " << kdr << " kdg : " << kdg << " kdb : " << kdb << endl;
+	cout << "ksr : " << ksr << " ksg : " << ksg << " ksb : " << ksb << endl;
 }
 
 Materiau::~Materiau() {
