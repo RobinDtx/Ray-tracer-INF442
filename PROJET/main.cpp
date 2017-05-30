@@ -45,17 +45,17 @@ int main(int argc, char** argv)
     lights.push_back(light);
     lights.push_back(light2);
     Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
-    Sphere sphere(0, 0, 0, 1000, &materiau);
-    Sphere sphere2(-1500,-200,700,200,&materiau);
-    Sphere sphere3(200, 200, 0, 100, &materiau);
+    Sphere sphere(0, 0, 1000, 1000, &materiau);
+    Sphere sphere2(-1500,-200,1700,200,&materiau);
+    Sphere sphere3(0, 0, -10000000, 10000000, &materiau);
     Scene scene;
     scene.push_back(sphere);
     scene.push_back(sphere2);
-    //scene.push_back(sphere3);
+    scene.push_back(sphere3);
 
 
-    Vector eye(-100000,0,0);
-    Vector target (0,0,0);
+    Vector eye(-100000,0,3000);
+    Vector target (0,0,1000);
     Vector up(0,0,1);
     Camera camera(&eye, &target, &up, 2160, 3180);
 
