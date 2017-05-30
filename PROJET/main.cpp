@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 	Light light(test,couleur);
 
 	Vector test2(0, -50, -200);
-	Color couleur2(255,0,0);
+	Color couleur2(255,0,100);
 	Light light2(test2, couleur2);
    // light.print();
 
@@ -53,6 +53,9 @@ int main(int argc, char** argv)
     scene.push_back(sphere);
     scene.push_back(sphere2);
     //scene.push_back(sphere3);
+
+    Color ia((couleur.getRed()+couleur2.getRed())/2, (couleur.getGreen()+couleur2.getGreen())/2, (couleur.getBlue()+couleur2.getBlue())/2);
+    scene.setIa(&ia);
 
 
 
