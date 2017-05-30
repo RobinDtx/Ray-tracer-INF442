@@ -24,6 +24,12 @@ class Color {
 
 		void print() const;
 
+		Color& operator*=(double l);
+		Color& operator/=(double l);
+		Color& operator+=(const Color& c);
+		Color& operator-=(const Color& c);
+
+
 
 	private:
 		unsigned int red;
@@ -31,5 +37,11 @@ class Color {
 		unsigned int blue;
 
 };
+
+Color operator*(double l, Color const& c);
+Color operator/(Color const& c, double l);
+Color operator+(Color const& c1, Color const& c2);
+Color operator-(Color const& c1, Color const& c2);
+
 
 #endif /* COLOR_H_ */
