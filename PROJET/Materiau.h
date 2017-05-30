@@ -34,6 +34,8 @@ class Materiau {
 		void setKs(double ks);
 		void setAlpha(double alpha);
 
+		void print() const;
+
 	private:
 		double kar; // composante ambiante
 		double kag;
