@@ -120,7 +120,7 @@ void Sphere::setR(double r){
 		this->r = 1;
 	}
 	else{
-		this->r = 0;
+		this->r = r;
 	}
 }
 
@@ -153,6 +153,7 @@ void Sphere::print() const
     cout<<"Rayon : "<<radius<<endl;
     cout<<"Couleur : ";
     materiau->print();
+    cout << "Coeff de réflexion : " << r << endl;
 }
 
 
