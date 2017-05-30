@@ -9,16 +9,15 @@
 #define SPHERE_H_
 #include "Vector.h"
 #include "Color.h"
+#include "Materiau.h"
 
 class Sphere {
 	public:
 		Sphere();
 		Sphere(Vector *center, double radius);
 		Sphere(double x, double y, double z, double radius);
-		Sphere(Vector *center, double radius, Color *color);
-		Sphere(double x, double y, double z, double radius, Color *color);
-		Sphere(Vector *center, double radius, unsigned int red, unsigned int green, unsigned int blue);
-		Sphere(double x, double y, double z, double radius, unsigned int red, unsigned int green, unsigned int blue);
+		Sphere(Vector *center, double radius, Materiau *materiau);
+		Sphere(double x, double y, double z, double radius, Materiau *materiau);
 		virtual ~Sphere();
 
 		void setCenter(Vector *center);
@@ -29,15 +28,11 @@ class Sphere {
 
 		void setRadius(double radius);
 
-		void setColor(Color *color);
-		void setColor(unsigned int red, unsigned int green, unsigned blue);
-		void setColorRed(unsigned int red);
-		void setColorGreen(unsigned int green);
-		void setColorBlue(unsigned int blue);
+		void setMateriau(Materiau* materiau);
 
 		const Vector* getCenter() const;
 		double getRadius() const;
-		const Color* getColor() const;
+		const Materiau* getMateriau() const;
 
 		void print() const;
 
@@ -46,7 +41,7 @@ class Sphere {
 	private:
 		Vector center;
 		double radius;
-		Color color;
+		Materiau* materiau;
 };
 
 #endif /* SPHERE_H_ */

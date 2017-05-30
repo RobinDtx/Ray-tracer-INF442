@@ -13,41 +13,33 @@ using namespace std;
 Sphere::Sphere() {
 	// TODO Auto-generated constructor stub
 	this->radius = 0;
+	this->materiau = new Materiau();
 }
 
 Sphere::Sphere(Vector *center, double radius){
 	this->center = Vector(center->x(), center->y(), center->z());
 	this->radius = radius;
+	this->materiau = new Materiau();
 }
 
 Sphere::Sphere(double x, double y, double z, double radius){
 	this->center = Vector(x, y, z);
 	this->radius = radius;
+	this->materiau = new Materiau();
 }
 
-Sphere::Sphere(Vector *center, double radius, Color *color){
+Sphere::Sphere(Vector *center, double radius, Materiau *materiau){
 	this->center=  Vector(center->x(), center->y(), center->z());
 	this->radius = radius;
-	this->color = Color(color->getRed(), color->getGreen(), color->getBlue());
+	this->materiau = materiau;
 }
 
-Sphere::Sphere(double x, double y, double z, double radius, Color *color){
+Sphere::Sphere(double x, double y, double z, double radius, Materiau *materiau){
 	this->center = Vector(x,y,z);
 	this->radius = radius;
-	this->color = Color(color->getRed(), color->getGreen(), color->getBlue());
+	this->materiau = materiau;
 }
 
-Sphere::Sphere(Vector *center, double radius, unsigned int red, unsigned int green, unsigned int blue){
-	this->center = Vector(center->x(), center->y(), center->z());
-	this->radius = radius;
-	this->color = Color(red, green, blue);
-}
-
-Sphere::Sphere(double x, double y, double z, double radius, unsigned int red, unsigned int green, unsigned blue){
-	this->center = Vector(x,y,z);
-	this->radius = radius;
-	this->color = Color(red, green, blue);
-}
 
 Sphere::~Sphere() {
 	// TODO Auto-generated destructor stub
@@ -83,29 +75,10 @@ void Sphere::setRadius(double radius){
 	this->radius = radius;
 }
 
-void Sphere::setColor(Color *color){
-	this->color.setRed(color->getRed());
-	this->color.setGreen(color->getGreen());
-	this->color.setBlue(color->getBlue());
+void Sphere::setMateriau(Materiau *materiau){
+	this->materiau = materiau;
 }
 
-void Sphere::setColor(unsigned int red, unsigned int green, unsigned int blue){
-	this->color.setRed(red);
-	this->color.setGreen(green);
-	this->color.setBlue(blue);
-}
-
-void Sphere::setColorRed(unsigned int red){
-	this->color.setRed(red);
-}
-
-void Sphere::setColorGreen(unsigned int green){
-	this->color.setGreen(green);
-}
-
-void Sphere::setColorBlue(unsigned int blue){
-	this->color.setBlue(blue);
-}
 
 
 //Getters
@@ -118,8 +91,8 @@ double Sphere::getRadius() const{
 	return(radius);
 }
 
-const Color* Sphere::getColor() const{
-	return(&color);
+const Materiau* Sphere::getMateriau() const{
+	return(materiau);
 }
 
 
@@ -130,7 +103,7 @@ void Sphere::print() const
     center.print();
     cout<<"Rayon : "<<radius<<endl;
     cout<<"Couleur : ";
-    color.print();
+    materiau->print();
 }
 
 
