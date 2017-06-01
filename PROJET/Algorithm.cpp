@@ -23,7 +23,9 @@ Algorithm::~Algorithm() {
 
 Algorithm::Algorithm(std::vector<Light> arg_lights, Scene arg_scene, Camera arg_camera, Materiau arg_materiau) : lights(arg_lights), scene(arg_scene), camera(arg_camera), materiau(arg_materiau)
 {
-    double red, green, blue;
+    double red = 0;
+	double green = 0;
+	double blue = 0;
     for (std::vector<Light>::iterator it = lights.begin();it!=lights.end();it++)
     {
         red+=it->getColor()->getRed();
@@ -95,9 +97,9 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 	double Ipg = 0;
 	double Ipb = 0;
 
-	double kar = materiau.getKar();
-	double kag = materiau.getKag();
-	double kab = materiau.getKab();
+	double kar = s->getMateriau()->getKar();
+	double kag = s->getMateriau()->getKag();
+	double kab = s->getMateriau()->getKab();
 
 	const Color* ia = scene.getIa();
 
@@ -120,13 +122,13 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
     }
 
 
-	double kdr = materiau.getKdr();
-	double kdg = materiau.getKdg();
-	double kdb = materiau.getKdb();
+	double kdr = s->getMateriau()->getKdr();
+	double kdg = s->getMateriau()->getKdg();
+	double kdb = s->getMateriau()->getKdb();
 
-	double ksr = materiau.getKsr();
-	double ksg = materiau.getKsg();
-	double ksb = materiau.getKsb();
+	double ksr = s->getMateriau()->getKsr();
+	double ksg = s->getMateriau()->getKsg();
+	double ksb = s->getMateriau()->getKsb();
 
 	for(vector<Light>::iterator it = lights.begin(); it != lights.end(); it++){
 		double coef = 1;
@@ -186,9 +188,9 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;}
 
 
-		Ipr += (ksr * pow(PS2, materiau.getAlpha()) * color->getRed())*coef;
-		Ipg += (ksg * pow(PS2, materiau.getAlpha()) * color->getGreen())*coef;
-		Ipb += (ksb * pow(PS2, materiau.getAlpha()) * color->getBlue())*coef;
+		Ipr += (ksr * pow(PS2, s->getMateriau()->getAlpha()) * color->getRed())*coef;
+		Ipg += (ksg * pow(PS2, s->getMateriau()->getAlpha()) * color->getGreen())*coef;
+		Ipb += (ksb * pow(PS2, s->getMateriau()->getAlpha()) * color->getBlue())*coef;
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
@@ -197,6 +199,52 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 	}
 
 	return(Color(Ipr, Ipg, Ipb));
+}
+
+Color Algorithm::compute_reflection_rec(RayDataStructure *rd, Sphere *s, Vector *n, int nombre){
+	std::pair<bool, std::pair<Vector*, double> > tmp;
+	bool intersect;
+	Vector* p_on_sphere;
+	Vector normal;
+	Sphere *new_s;
+	double t;
+	for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){
+		if(&*it != s){
+			tmp = ray_sphere_intersection(rd, &*it);
+			if(!intersect){
+				intersect = tmp.first;
+				if(tmp.first){
+					t = tmp.second.second;
+					p_on_sphere = tmp.second.first;
+					normal = *p_on_sphere - *(it->getCenter());
+					new_s = &*it;
+				}
+			}
+			else{
+				if(tmp.first){
+					if(tmp.second.second < t){
+						t = tmp.second.second;
+						p_on_sphere = tmp.second.first;
+						normal = *p_on_sphere - *(it->getCenter());
+						new_s = &*it;
+					}
+				}
+			}
+		}
+	}
+	if((intersect) && (nombre < 10)){
+		nombre++;
+		rd->setOrigin(p_on_sphere);
+		Vector direction = -2*Vector::scalar(&normal, rd->getDirection()) * normal + *rd->getDirection();
+		rd->setDirection(&direction);
+		Color cs = this->phong_reflection_model(p_on_sphere, &normal, new_s);
+		Color cr = this->compute_reflection_rec(rd, s, &normal, nombre);
+		return(new_s->getR() * cr + (1 - new_s->getR()) * cs);
+	}
+	else{
+		Color col = this->phong_reflection_model(rd->getOrigin(), n, s);
+		return(col);
+	}
 }
 
 void Algorithm::ray_traced_algorithm(){
@@ -247,72 +295,12 @@ void Algorithm::ray_traced_algorithm(){
 			}
 
 			if(intersect){
-//				if (debug)
-//                {
-//                    cout << "i : " << i << " j : " << j << endl << "Point de la sphere : ";
-//                    p_on_sphere->print();
-//                    cout << "Sphere : " << endl;
-//                    s->print();
-//                }
-
-				Color col = this->phong_reflection_model(p_on_sphere, &normal, s);
-				/*col*=1-s->getR();
-
-				Vector point(*p_on_sphere);
-
-				Vector N(normal);
-				N.normalize();
-				Vector V(*eye-point);
-
-				V.normalize();
-				Vector R = 2*Vector::scalar(&V, &N)*N - V;
-				R.normalize();
-
-				RayDataStructure reflechi(&point,&R);
-				std::pair<bool, std::pair<Vector*, double> > paire;
-				bool intersectionReflechi = false;
-				double distance;
-				Sphere *sphereReflechi;
-
-
-
-				for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){ //on regarde la plus proche sphère qui intersecte
-                    if (&*it!=s)
-                    {
-
-
-                    paire = ray_sphere_intersection(&reflechi, &*it);
-                    if(!intersectionReflechi){ //si on a pas encore trouvé d'intersection
-                        intersectionReflechi = paire.first;
-                        if(paire.first){
-                            distance = paire.second.second;
-                            point = *paire.second.first;
-                            N = point - *(it->getCenter());
-                            sphereReflechi = &*it;
-                        }
-                    }
-                    else{
-                        if(paire.first){ //si on a intersecté
-                            if(paire.second.second < distance){ //et qu'on est plus près
-                                point = *paire.second.first;
-                                N = point - *(it->getCenter());
-                                sphereReflechi = &*it;
-                            }
-                        }
-                    }
-                    }
-                }
-
-                if (intersectionReflechi)
-                {
-                    //sphereReflechi->print();
-                    Color test = phong_reflection_model(&point,&N,sphereReflechi);
-                    //test.print();
-                    col+=s->getR()*test;
-                }
-                */
-
-				d.push_back(col);
+				rd.setOrigin(p_on_sphere);
+				point_cible = -2*Vector::scalar(&dir_cible, &normal) * normal + dir_cible;
+				rd.setDirection(&point_cible);
+				Color cs = this->phong_reflection_model(p_on_sphere, &normal, s);
+				Color cr = this->compute_reflection_rec(&rd, s, &normal, 1);
+				d.push_back(s->getR() * cr + (1 - s->getR()) * cs );
 			}
 			else{
 				d.push_back(*scene.getIa());

@@ -26,6 +26,7 @@ class Algorithm {
 
 		std::pair<bool, std::pair<Vector*, double> > ray_sphere_intersection(RayDataStructure* rd, Sphere* s);
 		Color phong_reflection_model(const Vector* point, const Vector* normal, const Sphere* s); //A besoin des 9 k et alpha, de la couleur ambiante, de l'oeil, des lights (couleur et position)
+		Color compute_reflection_rec(RayDataStructure* rd, Sphere* s, Vector *n, int nombre);
 		void ray_traced_algorithm();
 		void ecrire(const string nom);
 

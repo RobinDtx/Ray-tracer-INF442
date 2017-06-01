@@ -31,7 +31,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-	Vector test (-1000000,100000,1000000);
+	Vector test (-1000000,1000000,1000000);
 
 	Color couleur (255,255,255);
 	Light light(test,couleur);
@@ -41,25 +41,31 @@ int main(int argc, char** argv)
 	Light light2(test2, couleur2);
    // light.print();
 
+	double r = 0.2;
+
     std::vector<Light> lights;
     lights.push_back(light);
     lights.push_back(light2);
-    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
-    Sphere sphere(0, 0, 1000, 1000, &materiau);
-    Sphere sphere2(-1500,-200,1700,200,&materiau);
-    Sphere sphere3(0, 0, -10000000, 10000000, &materiau);
+    Materiau materiau_jaune (0.2,0.2,0,0.6,0.6,0,0.2,0.2,0,70);
+    Materiau materiau_bleu (0,0,0.1,0,0,0.8,0,0,0.1,70);
+    Materiau materiau_rouge (0.1,0,0,0.8,0,0,0.1,0,0,70);
+    Sphere sphere(0, 0, 1000, 1000, &materiau_jaune, 0.1);
+    Sphere sphere2(-1500,-200,1700,200,&materiau_rouge, 0.1);
+    Sphere sphere3(0, 0, -10000000, 10000000, &materiau_bleu, 0.9);
     Scene scene;
     scene.push_back(sphere);
     scene.push_back(sphere2);
     scene.push_back(sphere3);
 
 
-    Vector eye(-100000,0,3000);
+    Vector eye(-100000,2000,3000);
     Vector target (0,0,1000);
     Vector up(0,0,1);
     Camera camera(&eye, &target, &up, 2160, 3180);
 
-    Algorithm algo(lights, scene, camera, materiau);
+
+
+    Algorithm algo(lights, scene, camera, materiau_jaune);
     algo.ray_traced_algorithm();
     algo.ecrire("problème");
 
