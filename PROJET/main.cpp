@@ -44,8 +44,8 @@ int main(int argc, char** argv)
     std::vector<Light> lights;
     lights.push_back(light);
     lights.push_back(light2);
-    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
-    Sphere sphere(0, 0, 0, 500, &materiau, 0.8);
+    Materiau materiau (0.3,0.3,0,0.5,0.5,0,0.1,0.1,0.1,50);
+    Sphere sphere(0, 0, 0, 500, &materiau, 0.95);
     Sphere sphere2(-700,-200,50,100,&materiau);
     Sphere sphere3(200, 200, 0, 100, &materiau);
     Scene scene;

@@ -226,6 +226,7 @@ void Algorithm::ray_traced_algorithm(){
 
 			vector<std::pair<double, Color> > couleurs;
 			int i=0;
+			Sphere *s=0;
 			//cout << "point";
 			do
 //			for (int i=0;i<2;i++)
@@ -238,8 +239,12 @@ void Algorithm::ray_traced_algorithm(){
 			double t; //distance du point à l'oeil
 			Vector* p_on_sphere; //point sur la sphère
 			Vector normal; //normale
-			Sphere *s;
+
 			for(vector<Sphere>::iterator it = scene.begin(); it != scene.end(); it++){ //on regarde la plus proche sphère qui intersecte
+
+				if(s!=&*it)
+				{
+
 				tmp = ray_sphere_intersection(&rd, &*it);
 				if(!intersect){ //si on a pas encore trouvé d'intersection
 					intersect = tmp.first;
@@ -258,6 +263,7 @@ void Algorithm::ray_traced_algorithm(){
 							s = &*it;
 						}
 					}
+				}
 				}
 			}
 
@@ -341,15 +347,16 @@ void Algorithm::ray_traced_algorithm(){
 			}
 			else{
 				//if(i==0){d.push_back(*scene.getIa());}
-				couleurs.push_back(std::make_pair(0,*scene.getIa()));
+				//couleurs.push_back(std::make_pair(0,*scene.getIa()));
 			}
 
             i++;
 
-			} while (intersect&&i<2);
+			} while (intersect&&i<20);
 
             if (couleurs.size()==0)
             {
+                //cout << "test";
                 d.push_back(*scene.getIa());
             }
             else
