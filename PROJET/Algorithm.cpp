@@ -96,9 +96,9 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 	double Ipg = 0;
 	double Ipb = 0;
 
-	double kar = materiau.getKar();
-	double kag = materiau.getKag();
-	double kab = materiau.getKab();
+	double kar = s->getMateriau()->getKar();
+	double kag = s->getMateriau()->getKag();
+	double kab = s->getMateriau()->getKab();
 
 	const Color* ia = scene.getIa();
 
@@ -121,13 +121,13 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
     }
 
 
-	double kdr = materiau.getKdr();
-	double kdg = materiau.getKdg();
-	double kdb = materiau.getKdb();
+	double kdr = s->getMateriau()->getKdr();
+	double kdg = s->getMateriau()->getKdg();
+	double kdb = s->getMateriau()->getKdb();
 
-	double ksr = materiau.getKsr();
-	double ksg = materiau.getKsg();
-	double ksb = materiau.getKsb();
+	double ksr = s->getMateriau()->getKsr();
+	double ksg = s->getMateriau()->getKsg();
+	double ksb = s->getMateriau()->getKsb();
 
 	for(vector<Light>::iterator it = lights.begin(); it != lights.end(); it++){
 		double coef = 1;
@@ -365,7 +365,7 @@ void Algorithm::ray_traced_algorithm(){
                 for (int i=couleurs.size()-1;i>=1;i--)
                 {
                     couleurFinale=couleurs[i-1].first*couleurFinale;
-                    couleurFinale+=(1-couleurs[i-1].first)*couleurs[i-1].second;
+                    couleurFinale+=(1.0-couleurs[i-1].first)*couleurs[i-1].second;
 
                 }
                 d.push_back(couleurFinale);

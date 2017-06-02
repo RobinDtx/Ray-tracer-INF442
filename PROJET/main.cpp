@@ -31,7 +31,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-	Vector test (-1000000,100000,1000000);
+	Vector test (0,0,1000000);
 
 	Color couleur (255,255,255);
 	Light light(test,couleur);
@@ -43,11 +43,12 @@ int main(int argc, char** argv)
 
     std::vector<Light> lights;
     lights.push_back(light);
-    lights.push_back(light2);
-    Materiau materiau (0.3,0.3,0,0.5,0.5,0,0.1,0.1,0.1,50);
-    Sphere sphere(0, 0, 0, 500, &materiau, 0.95);
-    Sphere sphere2(-700,-200,50,100,&materiau);
-    Sphere sphere3(200, 200, 0, 100, &materiau);
+    //lights.push_back(light2);
+    Materiau un (0.6,0.6,0,0.3,0.3,0,0.1,0.1,0.1,50);
+    Materiau deux (0,0.6,0,0,0.3,0,0.1,0.1,0.1,50);
+    Sphere sphere(0, 0, 0, 500, &un, 0.15);
+    Sphere sphere2(-900,-200,50,100,&deux,0.15);
+    Sphere sphere3(200, 200, 0, 100, &un);
     Scene scene;
     scene.push_back(sphere);
     scene.push_back(sphere2);
@@ -59,7 +60,7 @@ int main(int argc, char** argv)
     Vector up(0,0,1);
     Camera camera(&eye, &target, &up, 1400, 1400);
 
-    Algorithm algo(lights, scene, camera, materiau);
+    Algorithm algo(lights, scene, camera, un);
     algo.ray_traced_algorithm();
     algo.ecrire("problème");
 
