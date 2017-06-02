@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1496157690 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\main.cpp
+1496221119 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\main.cpp
 	<iostream>
 	"Vector.h"
 	"RayDataStructure.h"
@@ -18,7 +18,7 @@
 1496003895 c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\raydatastructure.h
 	"Vector.h"
 
-1496157560 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\sphere.cpp
+1496165187 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\sphere.cpp
 	"Sphere.h"
 	<iostream>
 
@@ -54,8 +54,9 @@
 	"Vector.h"
 	"Color.h"
 
-1496158278 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
+1496277580 source:c:\users\robin\documents\x\cours\2a\p4\inf442\projet - git\ray-tracer-inf442\projet\algorithm.cpp
 	"Algorithm.h"
+	"Color.h"
 	<utility>
 	<math.h>
 	<algorithm>

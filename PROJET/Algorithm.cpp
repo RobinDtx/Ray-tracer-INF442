@@ -6,6 +6,7 @@
  */
 
 #include "Algorithm.h"
+#include "Color.h"
 #include <utility>
 #include <math.h>
 #include <algorithm>
@@ -215,10 +216,24 @@ void Algorithm::ray_traced_algorithm(){
 	for (int i = 0; i< heigh; i++){
 		vector<Color> d;
 		for(int j = 0; j < width; j++){
+
 			Vector point_cible = *target + (heigh/2 - i) * orientation + (j-width/2) * abscisse;
 			Vector dir_cible = point_cible - *eye;
-			RayDataStructure rd(eye, &dir_cible);
-			bool intersect = false;
+            RayDataStructure rd(eye, &dir_cible);
+            bool intersect = false;
+
+            Color couleurFinale;
+
+			vector<std::pair<double, Color> > couleurs;
+			int i=0;
+			//cout << "point";
+			do
+//			for (int i=0;i<2;i++)
+            {
+
+
+            intersect = false;
+
 			std::pair<bool, std::pair<Vector*, double> > tmp;
 			double t; //distance du point à l'oeil
 			Vector* p_on_sphere; //point sur la sphère
@@ -255,7 +270,17 @@ void Algorithm::ray_traced_algorithm(){
 //                    s->print();
 //                }
 
-				Color col = this->phong_reflection_model(p_on_sphere, &normal, s);
+				//couleurFinale = this->phong_reflection_model(p_on_sphere, &normal, s);
+				//col.print();
+
+				couleurs.push_back(std::make_pair(s->getR(),phong_reflection_model(p_on_sphere,&normal,s)));
+
+				Vector V(-1*dir_cible);
+                V.normalize();
+                normal.normalize();
+                dir_cible = 2*Vector::scalar(&V, &normal)*normal - V;
+                rd.setOrigin(p_on_sphere);
+                rd.setDirection(&dir_cible);
 				/*col*=1-s->getR();
 
 				Vector point(*p_on_sphere);
@@ -312,11 +337,33 @@ void Algorithm::ray_traced_algorithm(){
                 }
                 */
 
-				d.push_back(col);
+				//if(i==0) {d.push_back(couleurFinale);}
 			}
 			else{
-				d.push_back(*scene.getIa());
+				//if(i==0){d.push_back(*scene.getIa());}
+				couleurs.push_back(std::make_pair(0,*scene.getIa()));
 			}
+
+            i++;
+
+			} while (intersect&&i<2);
+
+            if (couleurs.size()==0)
+            {
+                d.push_back(*scene.getIa());
+            }
+            else
+            {
+                couleurFinale=couleurs[couleurs.size()-1].second;
+                for (int i=couleurs.size()-1;i>=1;i--)
+                {
+                    couleurFinale=couleurs[i-1].first*couleurFinale;
+                    couleurFinale+=(1-couleurs[i-1].first)*couleurs[i-1].second;
+
+                }
+                d.push_back(couleurFinale);
+            }
+
 		}
 		c.push_back(d);
 	}
