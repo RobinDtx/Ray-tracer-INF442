@@ -66,12 +66,12 @@ int main(int argc, char** argv)
 //	Color couleurLumiere (255,255,255);
 //	Light light(origineLumiere,couleurLumiere);
 //    lights.push_back(light);
-//        //Vision près
+//        //alpha50
 //        string nomFichier = "alpha50";
 //        Sphere sphere(0, 0, 0, 500, &jaune, 0);
 //
 //
-//        //Vision loin
+//        //alpha500
 //        string nomFichier = "alpha500";
 //        Materiau jaunebis (0.5,0.5,0,0.4,0.4,0,0.1,0.1,0.1, 500);
 //        Sphere sphere(0, 0, 0, 500, &jaunebis, 0);
@@ -116,41 +116,41 @@ int main(int argc, char** argv)
     //Ombre
     	// Pas d'ombre : aller mettre le coef à 1
     ////// WARNING !!!!!!!!!! : Commenter la ligne dans algorithme.cpp
-    /*
-    Vector eye(-100000000, 100000000, 50000000);
+//
+//    Vector eye(-100000000, 100000000, 50000000);
+//
+//    string nomFichier = "pasdombre";
+//    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
+//    Sphere sphereVolante(0,0,250,250, &jaune, 0);
+//    scene.push_back(sol);
+//    scene.push_back(sphereVolante);
+//
+//    Vector origineLumiere (0,1000000,1000000);
+//    Color couleurLumiere(255,255,255);
+//    Light light(origineLumiere,couleurLumiere);
+//    lights.push_back(light);
 
-    string nomFichier = "pasdombre";
-    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
-    Sphere sphereVolante(0,0,250,250, &jaune, 0);
-    scene.push_back(sol);
-    scene.push_back(sphereVolante);
-
-    Vector origineLumiere (0,1000000,1000000);
-    Color couleurLumiere(255,255,255);
-    Light light(origineLumiere,couleurLumiere);
-    lights.push_back(light);
-	*/
 
     	// Avec ombre :
     ////// WARNING !!!!!!!!!! : Décommenter la ligne dans algorithme.cpp
-    /*
 
-    Vector eye(-100000000, 100000000, 50000000);
 
-    string nomFichier = "avecombre";
-    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
-    Sphere sphereVolante(0,0,250,250, &jaune, 0);
-    scene.push_back(sol);
-    scene.push_back(sphereVolante);
+//    Vector eye(-100000000, 100000000, 50000000);
+//
+//    string nomFichier = "avecombre";
+//    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
+//    Sphere sphereVolante(0,0,250,250, &jaune, 0);
+//    scene.push_back(sol);
+//    scene.push_back(sphereVolante);
+//
+//    Vector origineLumiere (0,1000000,1000000);
+//    Color couleurLumiere(255,255,255);
+//    Light light(origineLumiere,couleurLumiere);
+//    lights.push_back(light);
 
-    Vector origineLumiere (0,1000000,1000000);
-    Color couleurLumiere(255,255,255);
-    Light light(origineLumiere,couleurLumiere);
-    lights.push_back(light);
-    */
 
     	// Avec double ombre
-    /*
+
     Vector eye(-100000000, 0, 50000000);
     string nomFichier = "avecplusieurombre";
     Sphere sol(0,0,-1000000, 1000000, &vert, 0);
@@ -167,7 +167,9 @@ int main(int argc, char** argv)
     Light light2(origineLumiere2,couleurLumiere);
     lights.push_back(light1);
     lights.push_back(light2);
-	*/
+
+
+
     //Partie commune
 
 
