@@ -30,25 +30,80 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    Materiau jaune (0.6,0.6,0,0.3,0.3,0,0.1,0.1,0.1,50);
+    Materiau jaune (0.5,0.5,0,0.4,0.4,0,0.1,0.1,0.1,50);
     Materiau vert (0,0.6,0,0,0.3,0,0.1,0.1,0.1,50);
     Scene scene;
     std::vector<Light> lights;
 
-    //Vision à l'infini
-        //Vision près
-    string nomFichier = "visionpres";
-    Sphere sphere(0, -250, 0, 100, &jaune, 0);
-    Vector eye(-300,0,0);
-    scene.push_back(sphere);
+//    //Vision à l'infini
+//    Sphere sphere(0, -250, 0, 100, &jaune, 0);
+//    scene.push_back(sphere);
+//
+//
+//	Vector origineLumiere (0,0,1000000);
+//	Color couleurLumiere (255,255,255);
+//	Light light(origineLumiere,couleurLumiere);
+//    lights.push_back(light);
+//        //Vision près
+//        string nomFichier = "visionpres";
+//        Vector eye(-300,0,0);
+//
+//
+//        //Vision loin
+//        string nomFichier = "visionloin";
+//        Vector eye(-100000,0,0);
 
 
-	Vector origineLumiere (0,0,1000000);
-	Color couleurLumiere (255,255,255);
-	Light light(origineLumiere,couleurLumiere);
-    lights.push_back(light);
+//    //Changement alpha
+//
+//    Vector eye(-100000,0,0);
+//
+//	Vector origineLumiere (0,0,1000000);
+//	Color couleurLumiere (255,255,255);
+//	Light light(origineLumiere,couleurLumiere);
+//    lights.push_back(light);
+//        //Vision près
+//        string nomFichier = "alpha50";
+//        Sphere sphere(0, 0, 0, 500, &jaune, 0);
+//
+//
+//        //Vision loin
+//        string nomFichier = "alpha500";
+//        Materiau jaunebis (0.5,0.5,0,0.4,0.4,0,0.1,0.1,0.1, 500);
+//        Sphere sphere(0, 0, 0, 500, &jaunebis, 0);
+//
+//    scene.push_back(sphere);
 
-        //Vsio
+//    //Changement réflexion
+//
+//    Vector eye(-100000,0,0);
+//
+//	Vector origineLumiere (-10000,-1000000,1000000);
+//	Color couleurLumiere (255,255,255);
+//	Light light(origineLumiere,couleurLumiere);
+//
+//    lights.push_back(light);
+//        //Sans réflexion
+//        string nomFichier = "sansreflexion";
+//        Sphere sphere(0, 0, 0, 500, &jaune, 0);
+//        Sphere sphere2(-600, -300, 0, 100, &vert, 0);
+//
+//
+//        //Sans réflexion
+//        string nomFichier = "avecreflexion";
+//        Sphere sphere(0, 0, 0, 500, &jaune, 0.2);
+//        Sphere sphere2(-600, -300, 0, 100, &vert, 0);
+//
+//        //Avec réflexion mais on voit pas la sphère
+//        string nomFichier = "avecreflexionbis";
+//        Sphere sphere(0, 0, 0, 500, &jaune, 0.2);
+//        Sphere sphere2(-800, -800, 0, 100, &vert, 0);
+//
+//
+//    scene.push_back(sphere);
+//    scene.push_back(sphere2);
+
+
 
 
 

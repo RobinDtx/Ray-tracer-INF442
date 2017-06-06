@@ -187,9 +187,9 @@ Color Algorithm::phong_reflection_model(const Vector* p, const Vector* n, const 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << "/" << endl;}
 
 
-		Ipr += (ksr * pow(PS2, materiau.getAlpha()) * color->getRed())*coef;
-		Ipg += (ksg * pow(PS2, materiau.getAlpha()) * color->getGreen())*coef;
-		Ipb += (ksb * pow(PS2, materiau.getAlpha()) * color->getBlue())*coef;
+		Ipr += (ksr * pow(PS2, s->getMateriau()->getAlpha()) * color->getRed())*coef;
+		Ipg += (ksg * pow(PS2, s->getMateriau()->getAlpha()) * color->getGreen())*coef;
+		Ipb += (ksb * pow(PS2, s->getMateriau()->getAlpha()) * color->getBlue())*coef;
 
 		if (debug) {cout << Ipr << "/" << Ipg << "/" << Ipb << endl << endl;}
 
