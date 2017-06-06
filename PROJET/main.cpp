@@ -31,12 +31,13 @@ using namespace std;
 int main(int argc, char** argv)
 {
     Materiau jaune (0.6,0.6,0,0.3,0.3,0,0.1,0.1,0.1,50);
-    Materiau vert (0,0.6,0,0,0.3,0,0.1,0.1,0.1,50);
+    Materiau vert (0,0.4,0,0,0.1,0,0.05,0.05,0.05,50);
     Scene scene;
     std::vector<Light> lights;
 
     //Vision à l'infini
         //Vision près
+    /*
     string nomFichier = "visionpres";
     Sphere sphere(0, -250, 0, 100, &jaune, 0);
     Vector eye(-300,0,0);
@@ -47,6 +48,7 @@ int main(int argc, char** argv)
 	Color couleurLumiere (255,255,255);
 	Light light(origineLumiere,couleurLumiere);
     lights.push_back(light);
+    */
 
         //Vsio
 
@@ -54,8 +56,61 @@ int main(int argc, char** argv)
 
 
 
+    //Ombre
+    	// Pas d'ombre : aller mettre le coef à 1
+    ////// WARNING !!!!!!!!!! : Commenter la ligne dans algorithme.cpp
+    /*
+    Vector eye(-100000000, 100000000, 50000000);
 
+    string nomFichier = "pasdombre";
+    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
+    Sphere sphereVolante(0,0,250,250, &jaune, 0);
+    scene.push_back(sol);
+    scene.push_back(sphereVolante);
 
+    Vector origineLumiere (0,1000000,1000000);
+    Color couleurLumiere(255,255,255);
+    Light light(origineLumiere,couleurLumiere);
+    lights.push_back(light);
+	*/
+
+    	// Avec ombre :
+    ////// WARNING !!!!!!!!!! : Décommenter la ligne dans algorithme.cpp
+    /*
+
+    Vector eye(-100000000, 100000000, 50000000);
+
+    string nomFichier = "avecombre";
+    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
+    Sphere sphereVolante(0,0,250,250, &jaune, 0);
+    scene.push_back(sol);
+    scene.push_back(sphereVolante);
+
+    Vector origineLumiere (0,1000000,1000000);
+    Color couleurLumiere(255,255,255);
+    Light light(origineLumiere,couleurLumiere);
+    lights.push_back(light);
+    */
+
+    	// Avec double ombre
+    /*
+    Vector eye(-100000000, 0, 50000000);
+    string nomFichier = "avecplusieurombre";
+    Sphere sol(0,0,-1000000, 1000000, &vert, 0);
+    Sphere spherePose1(-250,250,250,250, &jaune, 0);
+    Sphere spherePose2(-250,-250,250,250, &jaune, 0);
+    scene.push_back(sol);
+    scene.push_back(spherePose1);
+    scene.push_back(spherePose2);
+
+    Vector origineLumiere1(-100000,100000,100000);
+    Vector origineLumiere2(100000,100000,100000);
+    Color couleurLumiere(255,255,255);
+    Light light1(origineLumiere1,couleurLumiere);
+    Light light2(origineLumiere2,couleurLumiere);
+    lights.push_back(light1);
+    lights.push_back(light2);
+	*/
     //Partie commune
 
 
