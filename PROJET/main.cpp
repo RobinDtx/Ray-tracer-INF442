@@ -30,47 +30,44 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-
-	Vector test (-1000000,100000,1000000);
-
-	Color couleur (255,255,255);
-	Light light(test,couleur);
-
-	Vector test2(-1000000, -100000, 100000);
-	Color couleur2(255,0,100);
-	Light light2(test2, couleur2);
-   // light.print();
-
-    std::vector<Light> lights;
-    lights.push_back(light);
-    lights.push_back(light2);
-    Materiau materiau (0,0,0,0.8,0.8,0,0.1,0.1,0.1,50);
-    Sphere sphere(0, 0, 1000, 1000, &materiau);
-    Sphere sphere2(-1500,-200,1700,200,&materiau);
-    Sphere sphere3(0, 0, -10000000, 10000000, &materiau);
+    Materiau jaune (0.6,0.6,0,0.3,0.3,0,0.1,0.1,0.1,50);
+    Materiau vert (0,0.6,0,0,0.3,0,0.1,0.1,0.1,50);
     Scene scene;
+    std::vector<Light> lights;
+
+    //Vision à l'infini
+        //Vision près
+    string nomFichier = "visionpres";
+    Sphere sphere(0, -250, 0, 100, &jaune, 0);
+    Vector eye(-300,0,0);
     scene.push_back(sphere);
-    scene.push_back(sphere2);
-    scene.push_back(sphere3);
 
 
-    Vector eye(-100000,0,3000);
-    Vector target (0,0,1000);
+	Vector origineLumiere (0,0,1000000);
+	Color couleurLumiere (255,255,255);
+	Light light(origineLumiere,couleurLumiere);
+    lights.push_back(light);
+
+        //Vsio
+
+
+
+
+
+
+
+    //Partie commune
+
+
+    Vector target (0,0,0);
     Vector up(0,0,1);
-    Camera camera(&eye, &target, &up, 2160, 3180);
+    Camera camera(&eye, &target, &up, 1400, 1400);
 
-    Algorithm algo(lights, scene, camera, materiau);
+    Algorithm algo(lights, scene, camera, jaune);
     algo.ray_traced_algorithm();
-    algo.ecrire("problème");
+    algo.ecrire(nomFichier);
 
 
-//	RayDataStructure *rd = new RayDataStructure(new Vector(0,0,0), new Vector(3,0,0));
-//	Sphere *s = new Sphere(new Vector(3,0,0), 1);
-//	std::pair<bool, std::pair<Vector*, double> > p = algo.ray_sphere_intersection(rd, s);
-//	cout << p.first << endl;
-//	if(p.first){
-//		p.second.first->print();
-//	}
 
 }
 
